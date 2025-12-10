@@ -4,6 +4,7 @@ import { ShieldCheck, Truck, RefreshCw, Lock } from 'lucide-react';
 
 export const Checkout: React.FC = () => {
   const [quantity, setQuantity] = useState(1);
+  const [paymentMethod, setPaymentMethod] = useState<string | null>(null);
   const price = 349;
 
   return (
@@ -114,9 +115,19 @@ export const Checkout: React.FC = () => {
               <div className="pt-4">
                  <div className="text-sm text-gray-400 mb-2">אמצעי תשלום (יבוצע במעמד החיוב)</div>
                  <div className="flex gap-3 mb-6">
-                    <div className="flex-1 bg-neutral-800 py-2 rounded text-center text-sm border border-neutral-700 text-gray-300 cursor-pointer hover:border-[#C5A059] transition-colors">כרטיס אשראי</div>
-                    <div className="flex-1 bg-neutral-800 py-2 rounded text-center text-sm border border-neutral-700 text-gray-300 cursor-pointer hover:border-[#C5A059] transition-colors">Bit</div>
-                    <div className="flex-1 bg-neutral-800 py-2 rounded text-center text-sm border border-neutral-700 text-gray-300 cursor-pointer hover:border-[#C5A059] transition-colors">PayPal</div>
+                    {['כרטיס אשראי', 'Bit', 'PayPal'].map((method) => (
+                      <div 
+                        key={method}
+                        onClick={() => setPaymentMethod(method)}
+                        className={`flex-1 py-3 rounded-lg text-center text-sm border cursor-pointer transition-all duration-300 transform hover:-translate-y-1 ${
+                          paymentMethod === method 
+                            ? 'bg-[#C5A059]/10 border-[#C5A059] text-[#C5A059] shadow-[0_0_15px_rgba(197,160,89,0.2)]' 
+                            : 'bg-neutral-800 border-neutral-700 text-gray-300 hover:border-[#C5A059] hover:bg-neutral-800/80 hover:text-white hover:shadow-[0_4px_12px_rgba(197,160,89,0.1)]'
+                        }`}
+                      >
+                        {method}
+                      </div>
+                    ))}
                  </div>
 
                  <Button className="w-full text-lg shadow-lg">
