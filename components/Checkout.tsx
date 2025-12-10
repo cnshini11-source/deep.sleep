@@ -6,6 +6,8 @@ export const Checkout: React.FC = () => {
   const [quantity, setQuantity] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState<string | null>(null);
   const price = 349;
+  
+  const PRODUCT_IMAGE_URL = "https://i.imgur.com/R4A8pSJ.png";
 
   return (
     <section className="min-h-screen pt-32 pb-24 bg-neutral-900">
@@ -22,7 +24,10 @@ export const Checkout: React.FC = () => {
              <div className="bg-black p-6 rounded-2xl border border-neutral-800 flex flex-col md:flex-row gap-6 items-center md:items-start">
                 <div className="w-32 h-32 bg-neutral-800 rounded-lg flex-shrink-0 overflow-hidden">
                    <img 
-                      src="https://images.unsplash.com/photo-1629363079979-456cb3c6838c?auto=format&fit=crop&q=80&w=200" 
+                      src={PRODUCT_IMAGE_URL}
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1629363079979-456cb3c6838c?auto=format&fit=crop&q=80&w=200";
+                      }}
                       alt="Product Thumbnail" 
                       className="w-full h-full object-cover"
                    />
