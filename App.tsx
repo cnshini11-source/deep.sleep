@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { HowItWorks } from './components/HowItWorks';
+import { HowToUse } from './components/HowToUse';
 import { Reviews } from './components/Reviews';
 import { FAQ } from './components/FAQ';
 import { Checkout } from './components/Checkout';
@@ -24,6 +25,7 @@ function App() {
           <>
             <Hero onNavigateCheckout={() => setView('checkout')} />
             <Features />
+            <HowToUse />
             <HowItWorks />
             <Reviews />
             <FAQ />
