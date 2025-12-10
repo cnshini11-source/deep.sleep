@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, Wind, ArrowRight, ShieldCheck, Droplets, Moon, CheckCircle, Sunrise } from 'lucide-react';
+import { Activity, Wind, Zap, ShieldCheck, Droplets, Moon, CheckCircle, Sunrise } from 'lucide-react';
 
 export const MechanismExplainer: React.FC = () => {
   return (
@@ -26,64 +26,78 @@ export const MechanismExplainer: React.FC = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* RIGHT COLUMN: HOW TO USE (Detailed) */}
+          {/* RIGHT COLUMN: HOW TO USE (Redesigned) */}
           <div className="order-1 lg:order-1">
-             <div className="bg-neutral-900/60 backdrop-blur-md border border-[#C5A059]/30 rounded-3xl p-8 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                <h3 className="text-3xl font-bold text-white mb-8 border-r-4 border-[#C5A059] pr-4">
-                  איך משתמשים?
-                  <span className="block text-lg font-normal text-gray-400 mt-1">4 צעדים פשוטים לשינה שקטה</span>
-                </h3>
+             <div className="relative">
+                {/* Section Header */}
+                <div className="mb-10 border-r-4 border-[#C5A059] pr-6">
+                   <h3 className="text-3xl md:text-4xl font-black text-white mb-2">
+                     המדריך לשינה שקטה
+                   </h3>
+                   <p className="text-[#C5A059] text-lg font-medium tracking-wide">
+                     4 צעדים פשוטים לשימוש במכשיר ה-EMS
+                   </p>
+                </div>
 
-                <div className="space-y-6">
+                {/* Steps Cards */}
+                <div className="space-y-4">
                   {/* Step 1 */}
-                  <div className="flex gap-4">
-                     <div className="flex-shrink-0 w-12 h-12 bg-black rounded-full border border-neutral-700 flex items-center justify-center text-[#C5A059]">
-                        <Droplets size={20} />
-                     </div>
-                     <div>
-                        <h4 className="text-lg font-bold text-white mb-1">1. הכנה קצרה</h4>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                           לפני השינה, צחצחו שיניים ושטפו את הפה. ודאו שהמכשיר נקי ויבש.
-                        </p>
+                  <div className="group relative bg-black/40 backdrop-blur-md border border-white/5 hover:border-[#C5A059]/40 rounded-2xl p-5 transition-all duration-300 hover:bg-black/60 hover:translate-x-[-8px]">
+                     <div className="flex gap-5 items-center">
+                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-neutral-800 to-black rounded-xl border border-neutral-700 flex items-center justify-center text-[#C5A059] group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                           <Droplets size={22} />
+                        </div>
+                        <div>
+                           <h4 className="text-lg font-bold text-white group-hover:text-[#C5A059] transition-colors">1. הכנה קצרה</h4>
+                           <p className="text-gray-400 text-sm leading-relaxed">
+                              לפני השינה, צחצחו שיניים ושטפו את הפה. ודאו שהמכשיר נקי ויבש לחלוטין.
+                           </p>
+                        </div>
                      </div>
                   </div>
 
                   {/* Step 2 */}
-                  <div className="flex gap-4">
-                     <div className="flex-shrink-0 w-12 h-12 bg-black rounded-full border border-neutral-700 flex items-center justify-center text-[#C5A059]">
-                        <Moon size={20} />
-                     </div>
-                     <div>
-                        <h4 className="text-lg font-bold text-white mb-1">2. הלבשה פשוטה</h4>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                           הכניסו את המכשיר לפה. המבנה הארגונומי שלו "מתלבש" על קשת השיניים באופן טבעי. אין צורך בכוח.
-                        </p>
+                  <div className="group relative bg-black/40 backdrop-blur-md border border-white/5 hover:border-[#C5A059]/40 rounded-2xl p-5 transition-all duration-300 hover:bg-black/60 hover:translate-x-[-8px]">
+                     <div className="flex gap-5 items-center">
+                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-neutral-800 to-black rounded-xl border border-neutral-700 flex items-center justify-center text-[#C5A059] group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                           <Moon size={22} />
+                        </div>
+                        <div>
+                           <h4 className="text-lg font-bold text-white group-hover:text-[#C5A059] transition-colors">2. הנחה בפה</h4>
+                           <p className="text-gray-400 text-sm leading-relaxed">
+                              הניחו את המכשיר בפה. העיצוב הארגונומי מתיישב טבעית על השיניים ללא צורך בכוח.
+                           </p>
+                        </div>
                      </div>
                   </div>
 
                   {/* Step 3 */}
-                  <div className="flex gap-4">
-                     <div className="flex-shrink-0 w-12 h-12 bg-black rounded-full border border-neutral-700 flex items-center justify-center text-[#C5A059]">
-                        <CheckCircle size={20} />
-                     </div>
-                     <div>
-                        <h4 className="text-lg font-bold text-white mb-1">3. התאמה ופעולה</h4>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                           סגרו את הפה בעדינות. המכשיר ינחה את הלסת התחתונה למנח אופטימלי שמונע נחירות. זה קורה לבד.
-                        </p>
+                  <div className="group relative bg-black/40 backdrop-blur-md border border-white/5 hover:border-[#C5A059]/40 rounded-2xl p-5 transition-all duration-300 hover:bg-black/60 hover:translate-x-[-8px]">
+                     <div className="flex gap-5 items-center">
+                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-neutral-800 to-black rounded-xl border border-neutral-700 flex items-center justify-center text-[#C5A059] group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                           <Zap size={22} />
+                        </div>
+                        <div>
+                           <h4 className="text-lg font-bold text-white group-hover:text-[#C5A059] transition-colors">3. פעולה אוטומטית</h4>
+                           <p className="text-gray-400 text-sm leading-relaxed">
+                              המכשיר יזהה לבד את הנחירות ויפעיל גירוי עדין רק בעת הצורך במהלך הלילה.
+                           </p>
+                        </div>
                      </div>
                   </div>
 
                    {/* Step 4 */}
-                   <div className="flex gap-4">
-                     <div className="flex-shrink-0 w-12 h-12 bg-black rounded-full border border-neutral-700 flex items-center justify-center text-[#C5A059]">
-                        <Sunrise size={20} />
-                     </div>
-                     <div>
-                        <h4 className="text-lg font-bold text-white mb-1">4. בבוקר שאחרי</h4>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                           הוציאו את המכשיר, שטפו במים פושרים וסבון עדין, והחזירו לקופסה המגנטית עד הלילה הבא.
-                        </p>
+                   <div className="group relative bg-black/40 backdrop-blur-md border border-white/5 hover:border-[#C5A059]/40 rounded-2xl p-5 transition-all duration-300 hover:bg-black/60 hover:translate-x-[-8px]">
+                     <div className="flex gap-5 items-center">
+                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-neutral-800 to-black rounded-xl border border-neutral-700 flex items-center justify-center text-[#C5A059] group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                           <Sunrise size={22} />
+                        </div>
+                        <div>
+                           <h4 className="text-lg font-bold text-white group-hover:text-[#C5A059] transition-colors">4. שגרת בוקר</h4>
+                           <p className="text-gray-400 text-sm leading-relaxed">
+                              בבוקר, שטפו את המכשיר במים וסבון, יבשו אותו והחזירו לקופסה המגנטית.
+                           </p>
+                        </div>
                      </div>
                   </div>
                 </div>
@@ -96,7 +110,7 @@ export const MechanismExplainer: React.FC = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-[#C5A059]/10 border border-[#C5A059]/30 px-4 py-1.5 rounded-full mb-6 backdrop-blur-md">
                 <ShieldCheck size={14} className="text-[#C5A059]" />
-                <span className="text-[#C5A059] text-xs font-bold tracking-widest uppercase">PATENTED EMA® TECH</span>
+                <span className="text-[#C5A059] text-xs font-bold tracking-widest uppercase">SMART EMS™ TECHNOLOGY</span>
             </div>
 
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
@@ -105,7 +119,7 @@ export const MechanismExplainer: React.FC = () => {
             </h2>
             
             <p className="text-gray-400 text-lg mb-12 leading-relaxed border-r-4 border-[#C5A059] pr-6 bg-black/40 p-4 rounded-l-xl backdrop-blur-sm">
-              ה-Shini Deep Sleep Pro פועל בטכנולוגיית ייצוב מתקדמת המבטיחה נתיב אוויר פתוח לאורך כל הלילה, ללא התערבות אקטיבית.
+              מכשיר EMS מפחית נחירות באמצעות גירוי חשמלי עדין לשרירי הלשון והגרון במהלך השינה. הפולסים מחזקים את טונוס השרירים, שומרים על פתיחות דרכי האוויר, ומפחיתים את הרטט שגורם לנחירה.
             </p>
 
             <div className="space-y-10 relative">
@@ -118,9 +132,9 @@ export const MechanismExplainer: React.FC = () => {
                   <Activity size={24} className="text-gray-500 group-hover:text-[#C5A059] transition-colors" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">הבעיה הפיזיולוגית</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">הבעיה: רפיון שרירים</h3>
                   <p className="text-gray-400 leading-relaxed text-sm">
-                    בשינה עמוקה, הלסת צונחת אחורה וחוסמת את האוויר. זהו הגורם העיקרי לנחירות ולעייפות כרונית.
+                    בזמן שינה עמוקה, שרירי הגרון נרפים יתר על המידה וצונחים, מה שחוסם את מעבר האוויר ויוצר את הנחירה.
                   </p>
                 </div>
               </div>
@@ -128,12 +142,12 @@ export const MechanismExplainer: React.FC = () => {
               {/* Step 2 */}
               <div className="relative flex gap-6 items-start group">
                 <div className="hidden md:flex flex-shrink-0 w-14 h-14 bg-black/50 backdrop-blur-md border border-[#C5A059] rounded-full items-center justify-center shadow-[0_0_20px_rgba(197,160,89,0.2)] z-10">
-                  <ArrowRight size={24} className="text-[#C5A059]" />
+                  <Zap size={24} className="text-[#C5A059]" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#C5A059] mb-2">הפתרון: קידום מיקרוסקופ</h3>
+                  <h3 className="text-xl font-bold text-[#C5A059] mb-2">הפתרון: גירוי EMS חכם</h3>
                   <p className="text-gray-300 leading-relaxed text-sm bg-neutral-900/80 backdrop-blur-sm p-4 rounded-xl border border-[#C5A059]/20 shadow-lg">
-                    המכשיר מקדם את הלסת ב-1-2 מ"מ בלבד. זה מספיק כדי למתוח את הרקמות, לפתוח את הנתיב ולהשתיק את הנחירות.
+                    המכשיר מזהה את הנחירה ושולח פולסים עדינים המהדקים את השרירים הרפויים ופותחים את הנתיב מחדש.
                   </p>
                 </div>
               </div>
@@ -144,9 +158,9 @@ export const MechanismExplainer: React.FC = () => {
                   <Wind size={24} className="text-blue-400/70 group-hover:text-blue-400 transition-colors" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">התוצאה: שקט מוחלט</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">התוצאה: נשימה חלקה</h3>
                   <p className="text-gray-400 leading-relaxed text-sm">
-                    אוויר נכנס בחופשיות. רמת החמצן עולה, השינה הופכת רציפה ועמוקה יותר, ואתם קמים רעננים.
+                    נתיב האוויר נשמר פתוח ויציב, הרטט מופסק, ואתם זוכים לשינה רציפה ושקטה ללא הפרעות.
                   </p>
                 </div>
               </div>
