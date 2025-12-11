@@ -13,7 +13,7 @@ const features: FeatureItem[] = [
     icon: <Wind />,
     title: 'מכשיר לפתיחת הנשימה',
     description: 'מרחיב בעדינות את הנחיריים כדי לאפשר זרימת אוויר חלקה ומוגברת, מונע גודש ומקל על הנשימה באופן מיידי.',
-    image: "https://i.imgur.com/ODr0ODF.jpeg"
+    image: "https://i.imgur.com/94bI0Ho.jpg"
   },
   {
     icon: <Glasses />,
