@@ -1,112 +1,75 @@
 import React from 'react';
-import { Wind, EyeOff, Zap, Plus, CheckCircle2 } from 'lucide-react';
+import { Power, Moon, Ear } from 'lucide-react';
 
 export const HowItWorks: React.FC = () => {
-  return (
-    <section id="how-it-works" className="py-24 bg-black relative overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C5A059] rounded-full blur-[150px] opacity-5 pointer-events-none"></div>
+  const steps = [
+    {
+      id: 1,
+      title: "ענידה נוחה",
+      description: "מניחים את הרצועות מאחורי האוזניים. המכשיר מתמקם בנוחות ובטבעיות.",
+      icon: <Ear size={32} className="text-[#C5A059]" />
+    },
+    {
+      id: 2,
+      title: "הפעלה בלחיצה",
+      description: "לחיצה אחת להפעלה. המכשיר נכנס למצב המתנה חכמה ונדלק רק בשינה.",
+      icon: <Power size={32} className="text-[#C5A059]" />
+    },
+    {
+      id: 3,
+      title: "שינה רציפה",
+      description: "זיהוי וטיפול אוטומטי בנחירות מבטיח לכם לילה שקט ושינה עמוקה.",
+      icon: <Moon size={32} className="text-[#C5A059]" />
+    }
+  ];
 
+  return (
+    <section id="how-it-works" className="py-20 bg-neutral-950 relative border-y border-neutral-900/50">
+      
+      {/* Ambient Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900/50 via-black to-black opacity-40"></div>
+      
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">איך הקסם קורה?</h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            השילוב המדעי שיוצר את השינה המושלמת
-          </p>
+        
+        {/* Compact Header */}
+        <div className="text-center mb-12">
+           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+             פשוט וקל לשימוש
+           </h2>
+           <p className="text-gray-400 text-lg font-light">
+             שלושה צעדים פשוטים לשינה מושלמת
+           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6 relative">
-            
-            {/* Step 1 */}
-            <div className="group relative bg-neutral-900/40 backdrop-blur-sm border border-neutral-800 hover:border-[#C5A059]/50 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 flex flex-col">
-              <div className="absolute top-6 right-6 text-4xl font-black text-[#C5A059]/10 group-hover:text-[#C5A059]/20 transition-colors">01</div>
-              <div className="w-14 h-14 bg-[#C5A059]/10 rounded-full flex items-center justify-center mb-6 text-[#C5A059] group-hover:scale-110 transition-transform">
-                <Wind size={28} />
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-white">שיפור זרימת האוויר</h3>
-              <p className="text-gray-400 leading-relaxed mb-6">
-                בזמן שינה, שרירי הגרון רפים וחוסמים את המעבר. המכשיר שומר על נתיב אוויר פתוח, מפחית רעידות (נחירות) ומאפשר חמצן רציף למוח.
-              </p>
-              
-              <div className="mt-auto pt-6 border-t border-white/10">
-                <h4 className="text-[#C5A059] font-bold text-sm mb-4 flex items-center gap-2">
-                  <CheckCircle2 size={16} />
-                  הוראות שימוש:
-                </h4>
-                <ul className="space-y-3 text-gray-300 text-sm leading-relaxed">
-                   <li className="flex gap-2">
-                      <span className="text-[#C5A059] font-bold">•</span>
-                      <span>מניחים את המכשיר מתחת לסנטר על עור נקי.</span>
-                   </li>
-                   <li className="flex gap-2">
-                      <span className="text-[#C5A059] font-bold">•</span>
-                      <span>מפעילים – הטכנולוגיה מזהה את הנשימה ומפעילה גירוי עדין לפתיחת דרכי האוויר.</span>
-                   </li>
-                   <li className="flex gap-2">
-                      <span className="text-[#C5A059] font-bold">•</span>
-                      <span>נרדמים כרגיל – המכשיר עובד אוטומטית כל הלילה.</span>
-                   </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Connecting Plus Sign (Desktop) */}
-            <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 items-center justify-center w-12 h-12 bg-black border border-neutral-800 rounded-full text-[#C5A059] shadow-lg">
-              <Plus size={24} />
-            </div>
-
-            {/* Step 2 */}
-            <div className="group relative bg-neutral-900/40 backdrop-blur-sm border border-neutral-800 hover:border-[#C5A059]/50 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 flex flex-col">
-              <div className="absolute top-6 right-6 text-4xl font-black text-[#C5A059]/10 group-hover:text-[#C5A059]/20 transition-colors">02</div>
-              <div className="w-14 h-14 bg-[#C5A059]/10 rounded-full flex items-center justify-center mb-6 text-[#C5A059] group-hover:scale-110 transition-transform">
-                <EyeOff size={28} />
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-white">ניתוק מהעולם החיצון</h3>
-              <p className="text-gray-400 leading-relaxed mb-6">
-                כיסוי העיניים מבטיח 100% חושך. זהו איתות ביולוגי קריטי למוח להפריש מלטונין (הורמון השינה), מה שמוביל להירדמות מהירה יותר ושינה עמוקה.
-              </p>
-
-              <div className="mt-auto pt-6 border-t border-white/10">
-                <h4 className="text-[#C5A059] font-bold text-sm mb-4 flex items-center gap-2">
-                  <CheckCircle2 size={16} />
-                  הוראות שימוש:
-                </h4>
-                <ul className="space-y-3 text-gray-300 text-sm leading-relaxed">
-                   <li className="flex gap-2">
-                      <span className="text-[#C5A059] font-bold">•</span>
-                      <span>מניחים על העיניים ומתאימים לרצועה.</span>
-                   </li>
-                   <li className="flex gap-2">
-                      <span className="text-[#C5A059] font-bold">•</span>
-                      <span>אוטם אור 100% ומרגיע את מערכת העצבים.</span>
-                   </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Step 3 - Full Width / Centered */}
-            <div className="md:col-span-2 mt-2">
-              <div className="group relative bg-gradient-to-r from-neutral-900/60 to-black border border-[#C5A059]/30 rounded-2xl p-10 flex flex-col md:flex-row items-center md:items-start gap-8 text-center md:text-right hover:shadow-[0_0_30px_rgba(197,160,89,0.1)] transition-all duration-500">
-                 <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#C5A059] to-[#8A6D3B] rounded-2xl rotate-3 flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform duration-300">
-                      <Zap size={40} className="text-black" />
+        {/* Clean Grid Layout */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+           {steps.map((step, index) => (
+             <div 
+                key={step.id}
+                className="group relative bg-neutral-900/30 border border-white/5 rounded-3xl p-8 hover:bg-neutral-900/50 hover:border-[#C5A059]/20 transition-all duration-300"
+             >
+                <div className="flex flex-col items-center text-center h-full">
+                    
+                    {/* Icon Circle */}
+                    <div className="w-20 h-20 rounded-2xl bg-black border border-white/10 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:border-[#C5A059]/40 transition-all duration-300">
+                        {step.icon}
                     </div>
-                 </div>
-                 
-                 <div className="flex-1">
-                    <div className="flex items-center justify-center md:justify-start gap-3 mb-3">
-                       <span className="bg-[#C5A059]/20 text-[#C5A059] text-xs font-bold px-3 py-1 rounded-full border border-[#C5A059]/20">התוצאה</span>
-                       <h3 className="text-2xl md:text-3xl font-bold text-white">אפקט הסינרגיה הכפול</h3>
-                    </div>
-                    <p className="text-gray-300 text-lg leading-relaxed">
-                       כשמשלבים נשימה שקטה עם חושך מוחלט, הגוף נכנס למצב 'Deep Sleep' (שינה עמוקה) ביעילות הגבוהה ב-40% מהרגיל. אתם לא רק מפסיקים לנחור – אתם מתעוררים עם אנרגיה חדשה לגמרי.
+
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#C5A059] transition-colors">
+                        {step.title}
+                    </h3>
+                    
+                    <p className="text-gray-400 text-base leading-relaxed font-light">
+                        {step.description}
                     </p>
-                 </div>
-              </div>
-            </div>
 
-          </div>
+                    {/* Step Indicator */}
+                    <div className="mt-auto pt-6 opacity-20 font-mono text-sm tracking-widest text-[#C5A059]">
+                        0{step.id}
+                    </div>
+                </div>
+             </div>
+           ))}
         </div>
       </div>
     </section>
