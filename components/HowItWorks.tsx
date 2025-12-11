@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wind, EyeOff, Zap, Plus } from 'lucide-react';
+import { Wind, EyeOff, Zap, Plus, CheckCircle2 } from 'lucide-react';
 
 export const HowItWorks: React.FC = () => {
   return (
@@ -19,15 +19,36 @@ export const HowItWorks: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-6 relative">
             
             {/* Step 1 */}
-            <div className="group relative bg-neutral-900/40 backdrop-blur-sm border border-neutral-800 hover:border-[#C5A059]/50 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1">
+            <div className="group relative bg-neutral-900/40 backdrop-blur-sm border border-neutral-800 hover:border-[#C5A059]/50 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 flex flex-col">
               <div className="absolute top-6 right-6 text-4xl font-black text-[#C5A059]/10 group-hover:text-[#C5A059]/20 transition-colors">01</div>
               <div className="w-14 h-14 bg-[#C5A059]/10 rounded-full flex items-center justify-center mb-6 text-[#C5A059] group-hover:scale-110 transition-transform">
                 <Wind size={28} />
               </div>
               <h3 className="text-2xl font-bold mb-3 text-white">שיפור זרימת האוויר</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-400 leading-relaxed mb-6">
                 בזמן שינה, שרירי הגרון רפים וחוסמים את המעבר. המכשיר שומר על נתיב אוויר פתוח, מפחית רעידות (נחירות) ומאפשר חמצן רציף למוח.
               </p>
+              
+              <div className="mt-auto pt-6 border-t border-white/10">
+                <h4 className="text-[#C5A059] font-bold text-sm mb-4 flex items-center gap-2">
+                  <CheckCircle2 size={16} />
+                  הוראות שימוש:
+                </h4>
+                <ul className="space-y-3 text-gray-300 text-sm leading-relaxed">
+                   <li className="flex gap-2">
+                      <span className="text-[#C5A059] font-bold">•</span>
+                      <span>מניחים את המכשיר מתחת לסנטר על עור נקי.</span>
+                   </li>
+                   <li className="flex gap-2">
+                      <span className="text-[#C5A059] font-bold">•</span>
+                      <span>מפעילים – הטכנולוגיה מזהה את הנשימה ומפעילה גירוי עדין לפתיחת דרכי האוויר.</span>
+                   </li>
+                   <li className="flex gap-2">
+                      <span className="text-[#C5A059] font-bold">•</span>
+                      <span>נרדמים כרגיל – המכשיר עובד אוטומטית כל הלילה.</span>
+                   </li>
+                </ul>
+              </div>
             </div>
 
             {/* Connecting Plus Sign (Desktop) */}
@@ -36,15 +57,32 @@ export const HowItWorks: React.FC = () => {
             </div>
 
             {/* Step 2 */}
-            <div className="group relative bg-neutral-900/40 backdrop-blur-sm border border-neutral-800 hover:border-[#C5A059]/50 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1">
+            <div className="group relative bg-neutral-900/40 backdrop-blur-sm border border-neutral-800 hover:border-[#C5A059]/50 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 flex flex-col">
               <div className="absolute top-6 right-6 text-4xl font-black text-[#C5A059]/10 group-hover:text-[#C5A059]/20 transition-colors">02</div>
               <div className="w-14 h-14 bg-[#C5A059]/10 rounded-full flex items-center justify-center mb-6 text-[#C5A059] group-hover:scale-110 transition-transform">
                 <EyeOff size={28} />
               </div>
               <h3 className="text-2xl font-bold mb-3 text-white">ניתוק מהעולם החיצון</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-400 leading-relaxed mb-6">
                 כיסוי העיניים מבטיח 100% חושך. זהו איתות ביולוגי קריטי למוח להפריש מלטונין (הורמון השינה), מה שמוביל להירדמות מהירה יותר ושינה עמוקה.
               </p>
+
+              <div className="mt-auto pt-6 border-t border-white/10">
+                <h4 className="text-[#C5A059] font-bold text-sm mb-4 flex items-center gap-2">
+                  <CheckCircle2 size={16} />
+                  הוראות שימוש:
+                </h4>
+                <ul className="space-y-3 text-gray-300 text-sm leading-relaxed">
+                   <li className="flex gap-2">
+                      <span className="text-[#C5A059] font-bold">•</span>
+                      <span>מניחים על העיניים ומתאימים לרצועה.</span>
+                   </li>
+                   <li className="flex gap-2">
+                      <span className="text-[#C5A059] font-bold">•</span>
+                      <span>אוטם אור 100% ומרגיע את מערכת העצבים.</span>
+                   </li>
+                </ul>
+              </div>
             </div>
 
             {/* Step 3 - Full Width / Centered */}

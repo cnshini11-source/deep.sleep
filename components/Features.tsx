@@ -1,5 +1,5 @@
 import React from 'react';
-import { Moon, Eye, Wind, Package } from 'lucide-react';
+import { Moon, Glasses, Wind, Package } from 'lucide-react';
 import { FeatureItem } from '../types';
 
 const features: FeatureItem[] = [
@@ -9,7 +9,7 @@ const features: FeatureItem[] = [
     description: 'פותח את דרכי האוויר ומפחית נחירות באופן מיידי.'
   },
   {
-    icon: <Eye className="w-8 h-8 text-[#C5A059]" />,
+    icon: <Glasses className="w-8 h-8 text-[#C5A059]" />,
     title: 'כיסוי עיניים 3D פרימיום',
     description: 'עיצוב תלת-ממדי ארגונומי שלא לוחץ על העפעפיים, מאפשר מצמוץ חופשי וחוסם אור ב-100% לשינה עמוקה ואיכותית.'
   },
