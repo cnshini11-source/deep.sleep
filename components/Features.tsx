@@ -27,14 +27,19 @@ export const Features: React.FC = () => {
   return (
     <section id="features" className="py-24 bg-neutral-950 relative overflow-hidden">
       {/* Decorative Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_#222222_0%,_#000000_100%)]"></div>
       
-      {/* Golden Ambient Glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C5A059] opacity-[0.03] blur-[150px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#C5A059] opacity-[0.03] blur-[150px] rounded-full pointer-events-none -translate-x-1/2 translate-y-1/2"></div>
+      {/* Deep Shadow Base */}
+      <div className="absolute inset-0 bg-neutral-950"></div>
+      
+      {/* Light Blue (Azure) Ambient Glows */}
+      <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-sky-600 opacity-[0.08] blur-[120px] rounded-full pointer-events-none mix-blend-screen"></div>
+      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-cyan-500 opacity-[0.06] blur-[100px] rounded-full pointer-events-none mix-blend-screen"></div>
+      
+      {/* Shadow Overlay for Depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.8)_100%)] pointer-events-none"></div>
       
       {/* Subtle Texture Pattern */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.05] pointer-events-none mix-blend-overlay"></div>
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.04] pointer-events-none mix-blend-overlay"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         
