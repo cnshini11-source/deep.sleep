@@ -25,14 +25,24 @@ const features: FeatureItem[] = [
 
 export const Features: React.FC = () => {
   return (
-    <section id="features" className="py-24 bg-neutral-900 relative">
-      <div className="container mx-auto px-4">
+    <section id="features" className="py-24 bg-neutral-950 relative overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_#222222_0%,_#000000_100%)]"></div>
+      
+      {/* Golden Ambient Glow */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C5A059] opacity-[0.03] blur-[150px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#C5A059] opacity-[0.03] blur-[150px] rounded-full pointer-events-none -translate-x-1/2 translate-y-1/2"></div>
+      
+      {/* Subtle Texture Pattern */}
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.05] pointer-events-none mix-blend-overlay"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">מה יש בערכה?</h2>
-          <div className="w-24 h-1 bg-[#C5A059] mx-auto rounded-full"></div>
-          <p className="mt-4 text-gray-400">שלושת מוצרי הפרימיום לחווית שינה מושלמת</p>
+        <div className="text-center mb-16 relative">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg">מה יש בערכה?</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A059] to-transparent mx-auto rounded-full"></div>
+          <p className="mt-4 text-gray-400 font-light text-lg">שלושת מוצרי הפרימיום לחווית שינה מושלמת</p>
         </div>
 
         {/* Grid - 3 columns */}
@@ -40,7 +50,7 @@ export const Features: React.FC = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="group relative h-[450px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl transition-all duration-500 hover:border-[#C5A059]/50 hover:shadow-[0_0_30px_rgba(197,160,89,0.2)]"
+              className="group relative h-[450px] rounded-3xl overflow-hidden border border-white/5 shadow-2xl transition-all duration-500 hover:border-[#C5A059]/50 hover:shadow-[0_0_40px_rgba(197,160,89,0.15)] bg-neutral-900/50 backdrop-blur-sm"
             >
               {/* Background Image */}
               <div className="absolute inset-0 bg-neutral-900">
@@ -48,13 +58,13 @@ export const Features: React.FC = () => {
                   <img 
                     src={feature.image} 
                     alt={feature.title}
-                    className="w-full h-full object-cover opacity-70 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700 ease-out"
+                    className="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-90 transition-all duration-700 ease-out"
                   />
                 )}
               </div>
 
               {/* Gradient Overlay for Text Readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent/10 opacity-90 group-hover:opacity-80 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent/10 opacity-95 group-hover:opacity-85 transition-opacity duration-500"></div>
 
               {/* Content Container */}
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
