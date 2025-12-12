@@ -8,10 +8,12 @@ import { Reviews } from './components/Reviews';
 import { FAQ } from './components/FAQ';
 import { Checkout } from './components/Checkout';
 import { Footer } from './components/Footer';
+import { Terms } from './components/Terms';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { FloatingWidgets } from './components/FloatingWidgets';
 
 function App() {
-  const [view, setView] = useState<'home' | 'checkout'>('home');
+  const [view, setView] = useState<'home' | 'checkout' | 'terms' | 'privacy'>('home');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,7 +23,7 @@ function App() {
     <div className="bg-black text-white min-h-screen font-sans selection:bg-[#C5A059] selection:text-black">
       <Header currentView={view} onViewChange={setView} />
       <main>
-        {view === 'home' ? (
+        {view === 'home' && (
           <>
             <Hero onNavigateCheckout={() => setView('checkout')} />
             <Features />
@@ -30,9 +32,10 @@ function App() {
             <Reviews />
             <FAQ />
           </>
-        ) : (
-          <Checkout />
         )}
+        {view === 'checkout' && <Checkout />}
+        {view === 'terms' && <Terms onBack={() => setView('home')} />}
+        {view === 'privacy' && <PrivacyPolicy onBack={() => setView('home')} />}
       </main>
       <Footer currentView={view} onViewChange={setView} />
       <FloatingWidgets />

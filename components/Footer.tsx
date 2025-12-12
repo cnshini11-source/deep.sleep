@@ -2,8 +2,8 @@ import React from 'react';
 import { Instagram, Facebook, Mail, Phone, MessageCircle } from 'lucide-react';
 
 interface FooterProps {
-  currentView?: 'home' | 'checkout';
-  onViewChange?: (view: 'home' | 'checkout') => void;
+  currentView?: 'home' | 'checkout' | 'terms' | 'privacy';
+  onViewChange?: (view: 'home' | 'checkout' | 'terms' | 'privacy') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => {
@@ -17,6 +17,16 @@ export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => 
     } else {
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleTermsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onViewChange?.('terms');
+  };
+
+  const handlePrivacyClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onViewChange?.('privacy');
   };
 
   return (
@@ -44,8 +54,8 @@ export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => 
           <div className="col-span-1">
             <h4 className="text-white font-bold mb-4">משפטיות</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">תנאי שימוש</a></li>
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">מדיניות פרטיות</a></li>
+              <li><a href="#" onClick={handleTermsClick} className="hover:text-[#C5A059] transition-colors">תנאי שימוש</a></li>
+              <li><a href="#" onClick={handlePrivacyClick} className="hover:text-[#C5A059] transition-colors">מדיניות פרטיות</a></li>
               <li><a href="#" className="hover:text-[#C5A059] transition-colors">מדיניות החזרים</a></li>
               <li><a href="#" className="hover:text-[#C5A059] transition-colors">הצהרת נגישות</a></li>
             </ul>
@@ -65,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => 
               </li>
             </ul>
             <div className="flex justify-center md:justify-start gap-4 mt-6">
-               <a href="#" className="text-gray-500 hover:text-[#C5A059]"><Instagram size={20} /></a>
+               <a href="https://www.instagram.com/shin_sleep.pro?igsh=cGhpMGJ0ZGJ1Z2s4&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#C5A059]"><Instagram size={20} /></a>
                <a href="#" className="text-gray-500 hover:text-[#C5A059]"><Facebook size={20} /></a>
             </div>
           </div>

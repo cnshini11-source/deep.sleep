@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 interface HeaderProps {
-  currentView?: 'home' | 'checkout';
-  onViewChange?: (view: 'home' | 'checkout') => void;
+  currentView?: 'home' | 'checkout' | 'terms' | 'privacy';
+  onViewChange?: (view: 'home' | 'checkout' | 'terms' | 'privacy') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ currentView = 'home', onViewChange }) => {
@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({ currentView = 'home', onViewChan
   };
 
   const goHome = () => {
-    if (currentView === 'checkout') {
+    if (currentView !== 'home') {
       onViewChange?.('home');
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -62,7 +62,7 @@ export const Header: React.FC<HeaderProps> = ({ currentView = 'home', onViewChan
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/90 backdrop-blur-md py-3 shadow-lg border-b border-gray-800' : 'bg-transparent py-5'
+        isScrolled || currentView !== 'home' ? 'bg-black/90 backdrop-blur-md py-3 shadow-lg border-b border-gray-800' : 'bg-transparent py-5'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
