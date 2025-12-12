@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Star, ChevronRight, ChevronLeft, Quote } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 import { Review } from '../types';
 
 const reviews: Review[] = [
@@ -54,7 +54,6 @@ export const Reviews: React.FC = () => {
   // Dragging State
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
-  const [currentTranslate, setCurrentTranslate] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -66,7 +65,10 @@ export const Reviews: React.FC = () => {
   }, []);
 
   const itemsToShow = isMobile ? 1 : 3;
+  // maxIndex determines how many "pages" or "stops" we have
   const maxIndex = reviews.length - itemsToShow;
+  // Total dots needed = number of possible start positions + 1
+  const totalDots = maxIndex + 1;
 
   // Touch/Mouse Handlers
   const handleStart = (clientX: number) => {
@@ -87,11 +89,15 @@ export const Reviews: React.FC = () => {
     
     const threshold = 50; // Minimum drag distance to trigger slide change
     
-    if (dragOffset < -threshold) {
-      // Swiped Left -> Next
+    // RTL Logic:
+    // Dragging Right (Positive diff) moves content Right -> Reveals items on the Left (Next)
+    // Dragging Left (Negative diff) moves content Left -> Reveals items on the Right (Prev)
+    
+    if (dragOffset > threshold) {
+      // Swiped Right -> Next (RTL)
       if (activeIndex < maxIndex) setActiveIndex(prev => prev + 1);
-    } else if (dragOffset > threshold) {
-      // Swiped Right -> Prev
+    } else if (dragOffset < -threshold) {
+       // Swiped Left -> Prev (RTL)
       if (activeIndex > 0) setActiveIndex(prev => prev - 1);
     }
     
@@ -99,22 +105,23 @@ export const Reviews: React.FC = () => {
   };
 
   // Event Listeners for Mouse/Touch
-  const onMouseDown = (e: React.MouseEvent) => handleStart(e.clientX);
-  const onMouseMove = (e: React.MouseEvent) => handleMove(e.clientX);
+  const onMouseDown = (e: React.MouseEvent) => {
+    // Only left click triggers drag
+    if (e.button !== 0) return;
+    handleStart(e.clientX);
+  };
+  const onMouseMove = (e: React.MouseEvent) => {
+    e.preventDefault();
+    handleMove(e.clientX);
+  };
   const onMouseUp = () => handleEnd();
-  const onMouseLeave = () => isDragging && handleEnd();
+  const onMouseLeave = () => {
+    if (isDragging) handleEnd();
+  };
 
   const onTouchStart = (e: React.TouchEvent) => handleStart(e.touches[0].clientX);
   const onTouchMove = (e: React.TouchEvent) => handleMove(e.touches[0].clientX);
   const onTouchEnd = () => handleEnd();
-
-  const nextSlide = () => {
-    if (activeIndex < maxIndex) setActiveIndex(prev => prev + 1);
-  };
-
-  const prevSlide = () => {
-    if (activeIndex > 0) setActiveIndex(prev => prev - 1);
-  };
 
   return (
     <section id="reviews" className="py-24 bg-neutral-950 overflow-hidden relative select-none">
@@ -133,29 +140,13 @@ export const Reviews: React.FC = () => {
                 4.9/5 מתוך מאות ביקורות
               </span>
             </div>
-          </div>
-          
-          <div className="flex gap-4 hidden md:flex">
-            <button 
-              onClick={prevSlide}
-              disabled={activeIndex === 0}
-              className={`p-4 rounded-full border border-gray-800 transition-all duration-300 ${activeIndex === 0 ? 'opacity-30 cursor-not-allowed text-gray-600' : 'hover:bg-[#C5A059] hover:text-black hover:border-[#C5A059] text-white'}`}
-            >
-              <ChevronRight size={24} />
-            </button>
-            <button 
-              onClick={nextSlide}
-              disabled={activeIndex >= maxIndex}
-              className={`p-4 rounded-full border border-gray-800 transition-all duration-300 ${activeIndex >= maxIndex ? 'opacity-30 cursor-not-allowed text-gray-600' : 'hover:bg-[#C5A059] hover:text-black hover:border-[#C5A059] text-white'}`}
-            >
-              <ChevronLeft size={24} />
-            </button>
+            <p className="text-gray-500 text-sm mt-2 md:hidden">(גלול הצידה לצפייה)</p>
           </div>
         </div>
 
         {/* Carousel Container */}
         <div 
-          className="relative overflow-visible"
+          className={`relative overflow-visible ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
           ref={containerRef}
           onMouseDown={onMouseDown}
           onMouseMove={onMouseMove}
@@ -164,10 +155,13 @@ export const Reviews: React.FC = () => {
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
+          // Prevent default drag behaviors for images/links
+          onDragStart={(e) => e.preventDefault()}
         >
           <div 
-            className={`flex transition-transform ease-out gap-6 ${isDragging ? 'duration-0 cursor-grabbing' : 'duration-500 cursor-grab'}`}
+            className={`flex transition-transform ease-out gap-6 ${isDragging ? 'duration-0' : 'duration-500'}`}
             style={{ 
+              // RTL: Positive translation moves items to the right, revealing next items (which are on the left)
               transform: `translateX(calc(${activeIndex * (100 / itemsToShow)}% + ${dragOffset}px))` 
             }}
           >
@@ -200,8 +194,9 @@ export const Reviews: React.FC = () => {
                        <div className="absolute inset-0 bg-[#C5A059] rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
                        <img 
                         src={review.avatar} 
-                        alt={review.name} 
-                        className="w-14 h-14 rounded-full object-cover border-2 border-neutral-800 group-hover:border-[#C5A059] transition-colors relative z-10"
+                        alt={review.name}
+                        draggable="false" 
+                        className="w-14 h-14 rounded-full object-cover border-2 border-neutral-800 group-hover:border-[#C5A059] transition-colors relative z-10 select-none"
                        />
                     </div>
                     <div>
@@ -218,14 +213,18 @@ export const Reviews: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Indicators */}
-        <div className="flex justify-center gap-2 mt-8 md:hidden">
-          {reviews.map((_, idx) => (
+        {/* Navigation Dots */}
+        <div className="flex justify-center items-center gap-3 mt-12">
+          {[...Array(totalDots)].map((_, idx) => (
             <button
               key={idx}
               onClick={() => setActiveIndex(idx)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === activeIndex ? 'w-6 bg-[#C5A059]' : 'bg-gray-700'}`}
-              aria-label={`Go to slide ${idx + 1}`}
+              className={`rounded-full transition-all duration-300 ${
+                idx === activeIndex 
+                  ? 'w-8 h-2 bg-[#C5A059] shadow-[0_0_10px_rgba(197,160,89,0.5)]' 
+                  : 'w-2 h-2 bg-neutral-700 hover:bg-neutral-500'
+              }`}
+              aria-label={`עבור לביקורת ${idx + 1}`}
             />
           ))}
         </div>

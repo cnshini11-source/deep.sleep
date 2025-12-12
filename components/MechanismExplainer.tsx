@@ -6,15 +6,16 @@ export const MechanismExplainer: React.FC = () => {
     <section className="py-24 bg-black relative overflow-hidden">
       
       {/* Background Image Layer (Subtle) */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 transform-gpu translate-z-0">
         <img 
           src="https://i.imgur.com/oWgNIg2.png" 
           alt="Medical simulation of airway" 
           className="w-full h-full object-cover opacity-15 grayscale mix-blend-screen"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black"></div>
-        {/* Central Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-[#C5A059] rounded-full blur-[120px] opacity-5 pointer-events-none"></div>
+        {/* Central Glow - GPU Accelerated */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-[#C5A059] rounded-full blur-[120px] opacity-5 pointer-events-none transform-gpu translate-z-0"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -48,7 +49,7 @@ export const MechanismExplainer: React.FC = () => {
                 {/* Step 1: Detection (Red Accent) */}
                 <div className="flex flex-col items-center text-center group">
                     <div className="relative mb-8 md:mb-12">
-                        <div className="absolute inset-0 bg-red-500 blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-full"></div>
+                        <div className="absolute inset-0 bg-red-500 blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-full transform-gpu will-change-opacity"></div>
                         <div className="w-20 h-20 rounded-full bg-black border border-neutral-800 flex items-center justify-center relative z-10 group-hover:border-red-500 transition-colors duration-300 shadow-2xl">
                             <Activity size={32} className="text-gray-400 group-hover:text-red-500 transition-colors" />
                         </div>
@@ -67,7 +68,7 @@ export const MechanismExplainer: React.FC = () => {
                 {/* Step 2: Treatment (Gold Accent) */}
                 <div className="flex flex-col items-center text-center group">
                     <div className="relative mb-8 md:mb-12">
-                         <div className="absolute inset-0 bg-[#C5A059] blur-2xl opacity-10 animate-pulse rounded-full"></div>
+                         <div className="absolute inset-0 bg-[#C5A059] blur-2xl opacity-10 animate-pulse rounded-full transform-gpu"></div>
                         <div className="w-24 h-24 -mt-2 rounded-full bg-gradient-to-br from-neutral-900 to-black border border-[#C5A059]/50 flex items-center justify-center relative z-10 shadow-[0_0_30px_rgba(197,160,89,0.15)]">
                             <Zap size={40} className="text-[#C5A059]" />
                         </div>
@@ -75,7 +76,7 @@ export const MechanismExplainer: React.FC = () => {
                         <div className="md:hidden absolute -bottom-12 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#C5A059] shadow-[0_0_10px_#C5A059]"></div>
                     </div>
 
-                    <div className="bg-gradient-to-b from-[#C5A059]/10 to-transparent border border-[#C5A059]/20 p-8 rounded-2xl w-full relative overflow-hidden flex-1 flex flex-col shadow-[0_10px_40px_rgba(0,0,0,0.5)] transform md:-translate-y-4 transition-transform">
+                    <div className="bg-gradient-to-b from-[#C5A059]/10 to-transparent border border-[#C5A059]/20 p-8 rounded-2xl w-full relative overflow-hidden flex-1 flex flex-col shadow-[0_10px_40px_rgba(0,0,0,0.5)] transform md:-translate-y-4 transition-transform transform-gpu">
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C5A059] to-transparent opacity-50"></div>
                         <h3 className="text-2xl font-bold text-white mb-3">גירוי אקטיבי</h3>
                         <p className="text-gray-200 leading-relaxed text-base font-medium">
@@ -87,7 +88,7 @@ export const MechanismExplainer: React.FC = () => {
                 {/* Step 3: Result (Blue Accent) */}
                 <div className="flex flex-col items-center text-center group">
                     <div className="relative mb-8 md:mb-12">
-                        <div className="absolute inset-0 bg-blue-500 blur-xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-full"></div>
+                        <div className="absolute inset-0 bg-blue-500 blur-xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-full transform-gpu will-change-opacity"></div>
                         <div className="w-20 h-20 rounded-full bg-black border border-neutral-800 flex items-center justify-center relative z-10 group-hover:border-blue-400 transition-colors duration-300">
                             <Wind size={32} className="text-gray-400 group-hover:text-blue-400 transition-colors" />
                         </div>

@@ -11,10 +11,19 @@ export const Header: React.FC<HeaderProps> = ({ currentView = 'home', onViewChan
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -61,7 +70,7 @@ export const Header: React.FC<HeaderProps> = ({ currentView = 'home', onViewChan
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 transform-gpu ${
         isScrolled || currentView !== 'home' ? 'bg-black/90 backdrop-blur-md py-3 shadow-lg border-b border-gray-800' : 'bg-transparent py-5'
       }`}
     >

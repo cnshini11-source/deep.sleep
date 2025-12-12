@@ -5,7 +5,7 @@ import { ShieldCheck, Truck, RefreshCw, Lock } from 'lucide-react';
 export const Checkout: React.FC = () => {
   const [quantity, setQuantity] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState<string | null>(null);
-  const price = 299;
+  const price = 219;
   
   const PRODUCT_IMAGE_URL = "https://i.imgur.com/R4A8pSJ.png";
 

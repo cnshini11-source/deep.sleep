@@ -26,14 +26,14 @@ const features: FeatureItem[] = [
 export const Features: React.FC = () => {
   return (
     <section id="features" className="py-24 bg-neutral-950 relative overflow-hidden">
-      {/* Decorative Background Elements */}
+      {/* Decorative Background Elements - GPU Optimized */}
       
       {/* Deep Shadow Base */}
       <div className="absolute inset-0 bg-neutral-950"></div>
       
-      {/* Light Blue (Azure) Ambient Glows */}
-      <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-sky-600 opacity-[0.08] blur-[120px] rounded-full pointer-events-none mix-blend-screen"></div>
-      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-cyan-500 opacity-[0.06] blur-[100px] rounded-full pointer-events-none mix-blend-screen"></div>
+      {/* Light Blue (Azure) Ambient Glows - GPU Accelerated */}
+      <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-sky-600 opacity-[0.08] blur-[120px] rounded-full pointer-events-none mix-blend-screen transform-gpu translate-z-0 will-change-transform"></div>
+      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-cyan-500 opacity-[0.06] blur-[100px] rounded-full pointer-events-none mix-blend-screen transform-gpu translate-z-0 will-change-transform"></div>
       
       {/* Shadow Overlay for Depth */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.8)_100%)] pointer-events-none"></div>
@@ -55,7 +55,7 @@ export const Features: React.FC = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="group relative h-[450px] rounded-3xl overflow-hidden border border-white/5 shadow-2xl transition-all duration-500 hover:border-[#C5A059]/50 hover:shadow-[0_0_40px_rgba(197,160,89,0.15)] bg-neutral-900/50 backdrop-blur-sm"
+              className="group relative h-[450px] rounded-3xl overflow-hidden border border-white/5 shadow-2xl transition-all duration-500 hover:border-[#C5A059]/50 hover:shadow-[0_0_40px_rgba(197,160,89,0.15)] bg-neutral-900/50 backdrop-blur-sm transform-gpu will-change-transform"
             >
               {/* Background Image */}
               <div className="absolute inset-0 bg-neutral-900">
@@ -64,6 +64,7 @@ export const Features: React.FC = () => {
                     src={feature.image} 
                     alt={feature.title}
                     className="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-90 transition-all duration-700 ease-out"
+                    loading="lazy"
                   />
                 )}
               </div>
@@ -78,7 +79,7 @@ export const Features: React.FC = () => {
                   <div className="absolute top-6 right-6">
                     <div className="w-14 h-14 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center shadow-lg group-hover:bg-[#C5A059] group-hover:border-[#C5A059] transition-all duration-300">
                        {/* Icon element with dynamic colors */}
-                       {React.cloneElement(feature.icon as React.ReactElement, { 
+                       {React.cloneElement(feature.icon as React.ReactElement<any>, { 
                          className: "w-7 h-7 text-white group-hover:text-black transition-colors duration-300" 
                        })}
                     </div>
