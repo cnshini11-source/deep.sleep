@@ -12,20 +12,70 @@
     <style>
       html {
         scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
+        -webkit-overflow-scrolling: touch;
       }
       body {
         font-family: 'Heebo', sans-serif;
         background-color: #000;
         color: #fff;
-        overflow-x: hidden; /* Prevent horizontal layout shifts */
+        overflow-x: hidden;
         width: 100%;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
+        text-rendering: optimizeSpeed; /* Prioritize speed over legibility precision */
       }
 
-      /* Custom Scrollbar - Sleek & Dark */
+      /* Native CSS Animations - GPU Accelerated */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+
+      @keyframes scan {
+        0% { top: 0%; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+
+      .animate-slide-up {
+        animation: slideUp 0.6s ease-out forwards;
+        opacity: 0; /* Start hidden */
+      }
+      
+      .animate-slide-in-right {
+        animation: slideInRight 0.8s ease-out forwards;
+        opacity: 0;
+      }
+
+      .animate-scan {
+        animation: scan 4s linear infinite;
+        will-change: top, opacity;
+      }
+
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-300 { animation-delay: 300ms; }
+
+      /* Optimization: Reduce Paint Cost */
+      .gpu-layer {
+        transform: translateZ(0);
+        will-change: transform, opacity;
+      }
+
+      /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 10px;
         background-color: #0a0a0a;
@@ -42,16 +92,7 @@
         background-color: #C5A059;
       }
 
-      /* Custom Gold Gradient */
-      .text-gold {
-        color: #C5A059;
-      }
-      .bg-gold {
-        background-color: #C5A059;
-      }
-      .border-gold {
-        border-color: #C5A059;
-      }
+      .text-gold { color: #C5A059; }
       .gradient-gold {
         background: linear-gradient(135deg, #C5A059 0%, #E6C88B 50%, #C5A059 100%);
       }
@@ -60,62 +101,14 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      
-      /* Page Transitions */
-      @keyframes slide-up-fade {
-        0% {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      
-      @keyframes fade-in-simple {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
 
-      .animate-page-enter {
-        animation: slide-up-fade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-      
-      .animate-fade-in-page {
-        animation: fade-in-simple 0.5s ease-out forwards;
-      }
-
-      /* Accessibility Classes */
-      .a11y-large-text {
-        font-size: 110%;
-      }
-      .a11y-xl-text {
-        font-size: 125%;
-      }
-      .a11y-contrast {
-        filter: contrast(175%);
-      }
-      .a11y-grayscale {
-        filter: grayscale(100%);
-      }
-      .a11y-links a {
-        text-decoration: underline !important;
-        text-decoration-color: #ffff00 !important;
-        text-decoration-thickness: 3px !important;
-      }
-      .a11y-font body, .a11y-font * {
-        font-family: Arial, Helvetica, sans-serif !important;
-      }
-      .a11y-no-motion *, .a11y-no-motion body {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
-      }
+      /* Accessibility Helpers */
+      .a11y-large-text { font-size: 110%; }
+      .a11y-xl-text { font-size: 125%; }
+      .a11y-contrast { filter: contrast(175%); }
+      .a11y-grayscale { filter: grayscale(100%); }
+      .a11y-links a { text-decoration: underline !important; text-decoration-color: #ffff00 !important; }
+      .a11y-no-motion *, .a11y-no-motion body { animation: none !important; transition: none !important; }
     </style>
   <script type="importmap">
 {
