@@ -26,9 +26,14 @@ const features: FeatureItem[] = [
 export const Features: React.FC = () => {
   return (
     <section id="features" className="py-24 bg-neutral-950 relative overflow-hidden contain-content">
-      {/* Static Background - Faster than blurred blobs */}
+      {/* PERFORMANCE FIX: Replaced 'blur' filters with radial-gradients. 
+          Blur requires heavy GPU calculation per frame. Radial gradients are rendered as simple textures. */}
+      
+      {/* Background Dark Base */}
       <div className="absolute inset-0 bg-neutral-950"></div>
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-900/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      {/* Optimized Glow Effect (Right Top) */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(8,47,73,0.15)_0%,transparent_70%)] pointer-events-none"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         
@@ -45,7 +50,6 @@ export const Features: React.FC = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              // Using CSS group-hover for interaction instead of JS
               className="group relative h-[450px] rounded-3xl overflow-hidden border border-white/5 bg-neutral-900 shadow-xl transition-all duration-300 hover:border-[#C5A059]/50"
             >
               {/* Background Image - Lazy Loaded */}

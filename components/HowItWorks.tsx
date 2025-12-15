@@ -1,88 +1,71 @@
 import React from 'react';
-import { Power, Moon, Ear } from 'lucide-react';
 
 export const HowItWorks: React.FC = () => {
   const steps = [
     {
-      id: 1,
-      title: "ענידה נוחה",
-      description: "מניחים את הרצועות מאחורי האוזניים. המכשיר מתמקם בנוחות ובטבעיות.",
-      icon: <Ear className="w-8 h-8 text-white group-hover:text-[#C5A059] transition-colors duration-300" />
+      id: "01",
+      title: "התאמה טבעית",
+      description: "העיצוב הארגונומי מתלבש בעדינות מאחורי האוזן. אין צורך בכיוונון מסובך – המבנה הגמיש מתאים את עצמו אליכם ברגע."
     },
     {
-      id: 2,
-      title: "הפעלה בלחיצה",
-      description: "לחיצה אחת להפעלה. המכשיר נכנס למצב המתנה חכמה ונדלק רק בשינה.",
-      icon: <Power className="w-8 h-8 text-white group-hover:text-[#C5A059] transition-colors duration-300" />
+      id: "02",
+      title: "הפעלה חכמה",
+      description: "לחיצה אחת והמכשיר נכנס לפעולה. חיישני ה-Smart EMS™ מזהים אוטומטית כניסה למצב שינה ומתחילים בניטור שקט.",
     },
     {
-      id: 3,
-      title: "שינה רציפה",
-      description: "זיהוי וטיפול אוטומטי בנחירות מבטיח לכם לילה שקט ושינה עמוקה.",
-      icon: <Moon className="w-8 h-8 text-white group-hover:text-[#C5A059] transition-colors duration-300" />
+      id: "03",
+      title: "שינה עמוקה",
+      description: "ברגע שמתחילה נחירה, המכשיר שולח איתות זעיר לשריר הגרון. נתיב האוויר נפתח, הנחירה נפסקת, ואתם (ובני הזוג) ממשיכים לישון."
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-black relative overflow-hidden contain-content">
-      {/* Reduced overlay complexity */}
-      <div className="absolute top-0 left-0 w-full h-px bg-[#C5A059]/20"></div>
+    <section id="how-it-works" className="py-32 bg-black relative overflow-hidden">
       
       <div className="container mx-auto px-4 relative z-10">
         
-        <div className="text-center mb-24">
-           <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
-             פשוט וקל <span className="text-[#C5A059]">לשימוש</span>
-           </h2>
-           <p className="text-xl text-gray-400 font-light max-w-2xl mx-auto">
-             טכנולוגיה מתקדמת שנגישה לכולם.
-           </p>
+        <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8 border-b border-neutral-800 pb-8">
+            <div className="max-w-2xl">
+                <span className="text-[#C5A059] font-bold tracking-widest text-sm uppercase mb-4 block">User Guide</span>
+                <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
+                    פשוט. חכם. <br/>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-l from-[#C5A059] to-[#E6C88B]">שקט.</span>
+                </h2>
+            </div>
+            <p className="text-gray-400 max-w-sm text-lg leading-relaxed md:text-left">
+                טכנולוגיה מורכבת שארזנו למוצר שכל אחד יכול להפעיל בשניות. ללא אפליקציות מסובכות וללא חוטים.
+            </p>
         </div>
 
-        {/* Desktop Timeline Layout */}
-        <div className="hidden md:flex justify-between items-start max-w-6xl mx-auto relative">
-            <div className="absolute top-[60px] left-0 right-0 h-[2px] bg-neutral-900 z-0"></div>
+        <div className="grid md:grid-cols-3 gap-8">
+            {steps.map((step, index) => (
+                <div key={step.id} className="group relative p-8 h-full min-h-[320px] flex flex-col justify-between bg-neutral-900/40 border border-neutral-800 hover:border-[#C5A059]/50 transition-all duration-500 rounded-2xl overflow-hidden">
+                    
+                    {/* Background Gradient on Hover - Replaces heavy blur with performant gradient opacity */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#C5A059]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-            {steps.map((step) => (
-                <div key={step.id} className="flex flex-col items-center text-center w-1/3 px-4 group relative z-10">
-                    <span className="mb-4 text-5xl font-black text-neutral-800 group-hover:text-neutral-700 transition-colors duration-300 font-mono">
-                      0{step.id}
-                    </span>
-
-                    <div className="w-32 h-32 rounded-full bg-black border border-neutral-800 group-hover:border-[#C5A059] transition-colors duration-300 flex items-center justify-center mb-8 shadow-2xl relative">
-                        {step.icon}
+                    {/* Content */}
+                    <div className="relative z-10">
+                        <div className="flex items-center justify-between mb-8">
+                            <span className="text-6xl md:text-7xl font-black text-neutral-800 group-hover:text-neutral-700 transition-colors duration-500 font-mono select-none">
+                                {step.id}
+                            </span>
+                            <div className="w-12 h-[1px] bg-[#C5A059] origin-right transform scale-x-50 group-hover:scale-x-100 transition-transform duration-500"></div>
+                        </div>
+                        
+                        <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#C5A059] transition-colors duration-300">
+                            {step.title}
+                        </h3>
+                        
+                        <p className="text-gray-400 text-base leading-relaxed group-hover:text-gray-300 transition-colors">
+                            {step.description}
+                        </p>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#C5A059] transition-colors">
-                        {step.title}
-                    </h3>
-                    
-                    <p className="text-gray-400 leading-relaxed font-light max-w-xs mx-auto">
-                        {step.description}
-                    </p>
+                    {/* Bottom Active Indicator */}
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[#C5A059] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                 </div>
             ))}
-        </div>
-
-        {/* Mobile Vertical Layout */}
-        <div className="md:hidden space-y-8 relative max-w-sm mx-auto">
-             <div className="absolute top-8 bottom-8 right-[2.25rem] w-[1px] bg-neutral-800"></div>
-
-             {steps.map((step) => (
-                 <div key={step.id} className="relative flex items-center gap-6 group">
-                     <div className="w-20 h-20 flex-shrink-0 rounded-2xl bg-[#0A0A0A] border border-neutral-800 group-hover:border-[#C5A059]/50 transition-colors duration-300 flex items-center justify-center relative z-10 shadow-xl">
-                        {step.icon}
-                        <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-[#C5A059] text-black font-bold flex items-center justify-center text-sm shadow-sm border border-black">
-                            {step.id}
-                        </div>
-                     </div>
-
-                     <div className="flex-1 bg-neutral-900 p-4 rounded-xl border border-white/5">
-                         <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-                         <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
-                     </div>
-                 </div>
-             ))}
         </div>
 
       </div>

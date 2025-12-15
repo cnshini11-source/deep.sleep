@@ -14,7 +14,7 @@ export const MechanismExplainer: React.FC = () => {
           className="w-full h-full object-cover grayscale mix-blend-screen"
         />
         
-        {/* CSS Animation Scanner - Highly Performant */}
+        {/* CSS Animation Scanner */}
         <div className="absolute left-0 right-0 h-1 bg-[#C5A059]/50 shadow-[0_0_15px_#C5A059] blur-[2px] z-10 animate-scan"></div>
       </div>
       
@@ -67,7 +67,8 @@ export const MechanismExplainer: React.FC = () => {
                 {/* Step 2 */}
                 <div className="flex flex-col items-center text-center group">
                     <div className="relative mb-8 md:mb-12">
-                         <div className="absolute inset-0 bg-[#C5A059] blur-xl opacity-20 rounded-full"></div>
+                         {/* PERFORMANCE FIX: Replaced expensive 'blur-xl' div with simple radial gradient */}
+                         <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(197,160,89,0.2)_0%,transparent_70%)]"></div>
                         <div className="w-24 h-24 -mt-2 rounded-full bg-neutral-900 border border-[#C5A059]/50 flex items-center justify-center relative z-10 shadow-[0_0_20px_rgba(197,160,89,0.2)]">
                             <Zap size={40} className="text-[#C5A059]" />
                         </div>
