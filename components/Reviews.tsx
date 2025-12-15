@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Star, Quote } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Review } from '../types';
 
 const reviews: Review[] = [
@@ -48,88 +48,22 @@ const reviews: Review[] = [
 ];
 
 export const Reviews: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  
-  // Dragging State
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [dragOffset, setDragOffset] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', checkMobile);
-    checkMobile();
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const itemsToShow = isMobile ? 1 : 3;
-  // maxIndex determines how many "pages" or "stops" we have
-  const maxIndex = reviews.length - itemsToShow;
-  // Total dots needed = number of possible start positions + 1
-  const totalDots = maxIndex + 1;
-
-  // Touch/Mouse Handlers
-  const handleStart = (clientX: number) => {
-    setIsDragging(true);
-    setStartX(clientX);
-    setDragOffset(0);
-  };
-
-  const handleMove = (clientX: number) => {
-    if (!isDragging) return;
-    const diff = clientX - startX;
-    setDragOffset(diff);
-  };
-
-  const handleEnd = () => {
-    if (!isDragging) return;
-    setIsDragging(false);
-    
-    const threshold = 50; // Minimum drag distance to trigger slide change
-    
-    // RTL Logic:
-    // Dragging Right (Positive diff) moves content Right -> Reveals items on the Left (Next)
-    // Dragging Left (Negative diff) moves content Left -> Reveals items on the Right (Prev)
-    
-    if (dragOffset > threshold) {
-      // Swiped Right -> Next (RTL)
-      if (activeIndex < maxIndex) setActiveIndex(prev => prev + 1);
-    } else if (dragOffset < -threshold) {
-       // Swiped Left -> Prev (RTL)
-      if (activeIndex > 0) setActiveIndex(prev => prev - 1);
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = direction === 'left' ? -320 : 320;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
-    
-    setDragOffset(0);
   };
-
-  // Event Listeners for Mouse/Touch
-  const onMouseDown = (e: React.MouseEvent) => {
-    // Only left click triggers drag
-    if (e.button !== 0) return;
-    handleStart(e.clientX);
-  };
-  const onMouseMove = (e: React.MouseEvent) => {
-    e.preventDefault();
-    handleMove(e.clientX);
-  };
-  const onMouseUp = () => handleEnd();
-  const onMouseLeave = () => {
-    if (isDragging) handleEnd();
-  };
-
-  const onTouchStart = (e: React.TouchEvent) => handleStart(e.touches[0].clientX);
-  const onTouchMove = (e: React.TouchEvent) => handleMove(e.touches[0].clientX);
-  const onTouchEnd = () => handleEnd();
 
   return (
-    <section id="reviews" className="py-24 bg-neutral-950 overflow-hidden relative select-none">
+    <section id="reviews" className="py-24 bg-neutral-950 relative">
       {/* Background Ambience */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#C5A059]/5 to-transparent pointer-events-none"></div>
 
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="text-center md:text-right w-full md:w-auto">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">סיפורי הצלחה</h2>
             <div className="flex items-center justify-center md:justify-start gap-3">
@@ -140,93 +74,78 @@ export const Reviews: React.FC = () => {
                 4.9/5 מתוך מאות ביקורות
               </span>
             </div>
-            <p className="text-gray-500 text-sm mt-2 md:hidden">(גלול הצידה לצפייה)</p>
+          </div>
+          
+          {/* Navigation Buttons (Desktop) */}
+          <div className="hidden md:flex gap-3">
+            <button onClick={() => scroll('right')} className="p-3 rounded-full border border-gray-800 hover:border-[#C5A059] hover:text-[#C5A059] transition-colors">
+              <ChevronRight size={24} />
+            </button>
+            <button onClick={() => scroll('left')} className="p-3 rounded-full border border-gray-800 hover:border-[#C5A059] hover:text-[#C5A059] transition-colors">
+              <ChevronLeft size={24} />
+            </button>
           </div>
         </div>
 
-        {/* Carousel Container */}
+        {/* CSS Scroll Snap Container */}
         <div 
-          className={`relative overflow-visible ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-          ref={containerRef}
-          onMouseDown={onMouseDown}
-          onMouseMove={onMouseMove}
-          onMouseUp={onMouseUp}
-          onMouseLeave={onMouseLeave}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-          // Prevent default drag behaviors for images/links
-          onDragStart={(e) => e.preventDefault()}
+          ref={scrollContainerRef}
+          className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory no-scrollbar"
+          style={{ scrollBehavior: 'smooth' }}
         >
-          <div 
-            className={`flex transition-transform ease-out gap-6 ${isDragging ? 'duration-0' : 'duration-500'}`}
-            style={{ 
-              // RTL: Positive translation moves items to the right, revealing next items (which are on the left)
-              transform: `translateX(calc(${activeIndex * (100 / itemsToShow)}% + ${dragOffset}px))` 
-            }}
-          >
-            {reviews.map((review) => (
-              <div 
-                key={review.id} 
-                className={`flex-shrink-0 ${isMobile ? 'w-full' : 'w-[calc(33.333%-16px)]'}`}
-              >
-                <div className="bg-[#0A0A0A] p-8 md:p-10 rounded-3xl border border-neutral-800 h-full relative group hover:border-[#C5A059]/50 transition-all duration-500 shadow-2xl">
-                  {/* Decorative Quote */}
-                  <div className="absolute top-6 left-6 text-neutral-800 group-hover:text-[#C5A059]/10 transition-colors duration-500">
-                    <Quote size={60} className="transform rotate-180" />
-                  </div>
-                  
-                  {/* Rating */}
-                  <div className="flex gap-1 mb-6 relative z-10">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} size={18} className="fill-[#C5A059] text-[#C5A059]" />
-                    ))}
-                  </div>
+          {reviews.map((review) => (
+            <div 
+              key={review.id} 
+              className="flex-shrink-0 w-[85vw] md:w-[350px] lg:w-[400px] snap-center md:snap-start"
+            >
+              <div className="bg-[#0A0A0A] p-8 rounded-3xl border border-neutral-800 h-full relative group hover:border-[#C5A059]/50 transition-all duration-500 shadow-xl flex flex-col">
+                {/* Decorative Quote */}
+                <div className="absolute top-6 left-6 text-neutral-800 group-hover:text-[#C5A059]/10 transition-colors duration-500">
+                  <Quote size={50} className="transform rotate-180" />
+                </div>
+                
+                {/* Rating */}
+                <div className="flex gap-1 mb-6 relative z-10">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <Star key={i} size={16} className="fill-[#C5A059] text-[#C5A059]" />
+                  ))}
+                </div>
 
-                  {/* Text */}
-                  <p className="text-gray-300 text-lg md:text-xl mb-8 leading-relaxed relative z-10 font-light min-h-[90px]">
-                    "{review.text}"
-                  </p>
+                {/* Text */}
+                <p className="text-gray-300 text-lg leading-relaxed relative z-10 font-light flex-grow mb-6">
+                  "{review.text}"
+                </p>
 
-                  {/* User Info */}
-                  <div className="flex items-center gap-4 border-t border-neutral-900 pt-6 relative z-10">
-                    <div className="relative">
-                       <div className="absolute inset-0 bg-[#C5A059] rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                       <img 
-                        src={review.avatar} 
-                        alt={review.name}
-                        draggable="false" 
-                        className="w-14 h-14 rounded-full object-cover border-2 border-neutral-800 group-hover:border-[#C5A059] transition-colors relative z-10 select-none"
-                       />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white text-lg">{review.name}</h4>
-                      <p className="text-xs text-[#C5A059] font-medium tracking-wide flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block animate-pulse"></span>
-                        רכישה מאומתת
-                      </p>
-                    </div>
+                {/* User Info */}
+                <div className="flex items-center gap-4 border-t border-neutral-900 pt-6 relative z-10 mt-auto">
+                  <div className="relative">
+                     <img 
+                      src={review.avatar} 
+                      alt={review.name}
+                      loading="lazy"
+                      className="w-12 h-12 rounded-full object-cover border border-neutral-700 group-hover:border-[#C5A059] transition-colors"
+                     />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white">{review.name}</h4>
+                    <p className="text-xs text-[#C5A059] font-medium tracking-wide flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block animate-pulse"></span>
+                      רכישה מאומתת
+                    </p>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Navigation Dots */}
-        <div className="flex justify-center items-center gap-3 mt-12">
-          {[...Array(totalDots)].map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              className={`rounded-full transition-all duration-300 ${
-                idx === activeIndex 
-                  ? 'w-8 h-2 bg-[#C5A059] shadow-[0_0_10px_rgba(197,160,89,0.5)]' 
-                  : 'w-2 h-2 bg-neutral-700 hover:bg-neutral-500'
-              }`}
-              aria-label={`עבור לביקורת ${idx + 1}`}
-            />
+            </div>
           ))}
+          {/* Spacer for end of scroll */}
+          <div className="w-1 flex-shrink-0"></div>
+        </div>
+        
+        {/* Mobile Swipe Indicator */}
+        <div className="md:hidden text-center text-gray-600 text-sm mt-2 flex items-center justify-center gap-2">
+            <ChevronRight size={14} className="animate-pulse" />
+            החלק לצפייה בעוד
+            <ChevronLeft size={14} className="animate-pulse" />
         </div>
 
       </div>
