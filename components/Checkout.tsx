@@ -85,6 +85,8 @@ export const Checkout: React.FC = () => {
                    <label className="text-sm text-gray-400">שם מלא</label>
                    <input 
                      type="text" 
+                     name="name"
+                     autoComplete="name"
                      className="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-3 text-white focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] focus:outline-none transition-all placeholder-gray-600" 
                      placeholder="ישראל ישראלי" 
                      required 
@@ -94,6 +96,8 @@ export const Checkout: React.FC = () => {
                    <label className="text-sm text-gray-400">טלפון</label>
                    <input 
                      type="tel" 
+                     name="phone"
+                     autoComplete="tel"
                      className="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-3 text-white focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] focus:outline-none transition-all placeholder-gray-600" 
                      placeholder="050-0000000" 
                      dir="ltr"
@@ -107,6 +111,8 @@ export const Checkout: React.FC = () => {
                  <label className="text-sm text-gray-400">אימייל לקבלה חשבונית</label>
                  <input 
                    type="email" 
+                   name="email"
+                   autoComplete="email"
                    className="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-3 text-white focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] focus:outline-none transition-all placeholder-gray-600" 
                    placeholder="email@example.com" 
                    dir="ltr"
@@ -120,6 +126,8 @@ export const Checkout: React.FC = () => {
                     <label className="text-sm text-gray-400">עיר</label>
                     <input 
                       type="text" 
+                      name="city"
+                      autoComplete="address-level2"
                       className="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-3 text-white focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] focus:outline-none transition-all" 
                       required 
                     />
@@ -128,6 +136,7 @@ export const Checkout: React.FC = () => {
                     <label className="text-sm text-gray-400">מס' בית</label>
                     <input 
                       type="text" 
+                      name="houseNumber"
                       className="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-3 text-white focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] focus:outline-none transition-all" 
                       required 
                     />
@@ -138,6 +147,8 @@ export const Checkout: React.FC = () => {
                  <label className="text-sm text-gray-400">כתובת (רחוב)</label>
                  <input 
                    type="text" 
+                   name="street"
+                   autoComplete="street-address"
                    className="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-3 text-white focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] focus:outline-none transition-all" 
                    required 
                  />

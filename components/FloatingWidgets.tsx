@@ -117,7 +117,7 @@ export const FloatingWidgets: React.FC = () => {
       {/* --- RIGHT SIDE: WhatsApp --- */}
       <div className="fixed bottom-6 right-6 z-40">
         <a 
-          href="https://wa.me/XXXXXXXXXX" 
+          href="https://wa.me/972500000000" 
           target="_blank" 
           rel="noopener noreferrer"
           className="bg-[#25D366] text-white p-4 md:p-5 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_25px_rgba(37,211,102,0.6)] transition-all duration-500 group flex items-center gap-0 hover:gap-3 overflow-hidden"

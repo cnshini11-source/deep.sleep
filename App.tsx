@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { MechanismExplainer } from './components/MechanismExplainer';
 import { HowItWorks } from './components/HowItWorks';
+import { HowToUse } from './components/HowToUse';
 import { Reviews } from './components/Reviews';
 import { FAQ } from './components/FAQ';
 import { Checkout } from './components/Checkout';
@@ -16,7 +17,7 @@ function App() {
   const [view, setView] = useState<'home' | 'checkout' | 'terms' | 'privacy'>('home');
 
   useEffect(() => {
-    // Immediate scroll reset when view changes, browsers handle the smooth scroll behavior
+    // Immediate scroll reset when view changes
     window.scrollTo(0, 0);
   }, [view]);
 
@@ -30,6 +31,7 @@ function App() {
             <Features />
             <MechanismExplainer />
             <HowItWorks />
+            <HowToUse />
             <Reviews />
             <FAQ />
           </div>
