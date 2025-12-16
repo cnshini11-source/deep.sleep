@@ -17,13 +17,14 @@ function App() {
   const [view, setView] = useState<'home' | 'checkout' | 'terms' | 'privacy'>('home');
 
   useEffect(() => {
-    // Immediate scroll reset when view changes
-    window.scrollTo(0, 0);
+    // Ensure smooth scroll to top when switching views
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [view]);
 
   return (
     <div className="bg-black text-white min-h-screen font-sans selection:bg-[#C5A059] selection:text-black overflow-x-hidden">
       <Header currentView={view} onViewChange={setView} />
+      
       <main className="min-h-screen">
         {view === 'home' && (
           <div className="animate-fade-in-page">
@@ -55,6 +56,7 @@ function App() {
           </div>
         )}
       </main>
+
       <Footer currentView={view} onViewChange={setView} />
       <FloatingWidgets />
     </div>

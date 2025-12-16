@@ -9,6 +9,12 @@ export const Checkout: React.FC = () => {
   
   const PRODUCT_IMAGE_URL = "https://i.imgur.com/R4A8pSJ.png";
 
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Here you would integrate with a real payment processor
+    alert('תודה על הזמנתך! (זוהי הדגמה - ההזמנה נקלטה במערכת)');
+  };
+
   return (
     <section className="min-h-screen pt-24 md:pt-32 pb-24 bg-neutral-900">
       <div className="container mx-auto px-4">
@@ -37,14 +43,16 @@ export const Checkout: React.FC = () => {
                         <div className="flex items-center bg-neutral-900 border border-gray-700 rounded-lg">
                             <button 
                               onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                              className="px-3 py-1 text-white hover:bg-gray-800 transition text-lg"
+                              className="px-3 py-1 text-white hover:bg-gray-800 transition text-lg w-10 h-8 flex items-center justify-center"
                               type="button"
+                              aria-label="הפחת כמות"
                             >-</button>
                             <span className="px-3 py-1 text-white font-mono w-8 text-center">{quantity}</span>
                             <button 
                               onClick={() => setQuantity(quantity + 1)}
-                              className="px-3 py-1 text-white hover:bg-gray-800 transition text-lg"
+                              className="px-3 py-1 text-white hover:bg-gray-800 transition text-lg w-10 h-8 flex items-center justify-center"
                               type="button"
+                              aria-label="הוסף כמות"
                             >+</button>
                         </div>
                         <div className="text-xl md:text-2xl font-bold text-[#C5A059]">
@@ -79,7 +87,7 @@ export const Checkout: React.FC = () => {
           <div className="bg-black p-6 md:p-8 rounded-2xl border border-[#C5A059]/30 shadow-[0_0_50px_rgba(197,160,89,0.05)] order-2 lg:order-2">
             <h3 className="text-xl font-bold text-white mb-6 border-b border-gray-800 pb-4">פרטי משלוח</h3>
             
-            <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert('תודה על הזמנתך! (זוהי הדגמה)'); }}>
+            <form className="space-y-4" onSubmit={handleFormSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                    <label className="text-sm text-gray-400">שם מלא</label>
@@ -98,6 +106,7 @@ export const Checkout: React.FC = () => {
                      type="tel" 
                      name="phone"
                      autoComplete="tel"
+                     inputMode="numeric"
                      className="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-3 text-white focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] focus:outline-none transition-all placeholder-gray-600" 
                      placeholder="050-0000000" 
                      dir="ltr"
@@ -113,6 +122,7 @@ export const Checkout: React.FC = () => {
                    type="email" 
                    name="email"
                    autoComplete="email"
+                   inputMode="email"
                    className="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-3 text-white focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] focus:outline-none transition-all placeholder-gray-600" 
                    placeholder="email@example.com" 
                    dir="ltr"
@@ -137,6 +147,7 @@ export const Checkout: React.FC = () => {
                     <input 
                       type="text" 
                       name="houseNumber"
+                      autoComplete="address-line2"
                       className="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-3 text-white focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] focus:outline-none transition-all" 
                       required 
                     />
@@ -177,7 +188,7 @@ export const Checkout: React.FC = () => {
                     ))}
                  </div>
 
-                 <Button className="w-full text-xl py-4 shadow-[0_0_20px_rgba(197,160,89,0.3)]">
+                 <Button type="submit" className="w-full text-xl py-4 shadow-[0_0_20px_rgba(197,160,89,0.3)]">
                     שליחת הזמנה - ₪{price * quantity}
                  </Button>
 
