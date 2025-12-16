@@ -1,71 +1,94 @@
 import React from 'react';
+import { Fingerprint, BrainCircuit, MoonStar } from 'lucide-react';
 
 export const HowItWorks: React.FC = () => {
   const steps = [
     {
-      id: "01",
+      num: "01",
+      keyword: "פשוט.",
       title: "התאמה טבעית",
-      description: "העיצוב הארגונומי מתלבש בעדינות מאחורי האוזן. אין צורך בכיוונון מסובך – המבנה הגמיש מתאים את עצמו אליכם ברגע."
+      description: "ללא מסכות מסורבלות וללא חוטים. העיצוב הארגונומי מתלבש בנוחות מתחת לסנטר ומאפשר הירדמות טבעית ומהירה.",
+      icon: <Fingerprint strokeWidth={1.5} />
     },
     {
-      id: "02",
-      title: "הפעלה חכמה",
-      description: "לחיצה אחת והמכשיר נכנס לפעולה. חיישני ה-Smart EMS™ מזהים אוטומטית כניסה למצב שינה ומתחילים בניטור שקט.",
+      num: "02",
+      keyword: "חכם.",
+      title: "זיהוי וטיפול",
+      description: "חיישני ה-Smart EMS™ סורקים את הנשימה 100 פעמים בדקה. ברגע שמתחילה נחירה, המכשיר שולח איתות עדין לפתיחת נתיב האוויר.",
+      icon: <BrainCircuit strokeWidth={1.5} />
     },
     {
-      id: "03",
-      title: "שינה עמוקה",
-      description: "ברגע שמתחילה נחירה, המכשיר שולח איתות זעיר לשריר הגרון. נתיב האוויר נפתח, הנחירה נפסקת, ואתם (ובני הזוג) ממשיכים לישון."
+      num: "03",
+      keyword: "שקט.",
+      title: "דממה בחדר",
+      description: "הנחירות פוסקות באופן מיידי. אתם (ובני הזוג) זוכים לשינה עמוקה, רציפה ונטולת הפרעות עד הבוקר.",
+      icon: <MoonStar strokeWidth={1.5} />
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-32 bg-black relative overflow-hidden">
+    <section id="how-it-works" className="py-24 md:py-32 bg-black relative overflow-hidden">
       
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-[#C5A059] opacity-[0.03] blur-[100px] rounded-full"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] bg-blue-900 opacity-[0.05] blur-[120px] rounded-full"></div>
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
         
-        <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8 border-b border-neutral-800 pb-8">
-            <div className="max-w-2xl">
-                <span className="text-[#C5A059] font-bold tracking-widest text-sm uppercase mb-4 block">User Guide</span>
-                <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
-                    פשוט. חכם. <br/>
-                    <span className="text-transparent bg-clip-text bg-gradient-to-l from-[#C5A059] to-[#E6C88B]">שקט.</span>
-                </h2>
-            </div>
-            <p className="text-gray-400 max-w-sm text-lg leading-relaxed md:text-left">
-                טכנולוגיה מורכבת שארזנו למוצר שכל אחד יכול להפעיל בשניות. ללא אפליקציות מסובכות וללא חוטים.
-            </p>
+        {/* Section Header */}
+        <div className="text-center mb-24 animate-fade-in">
+            <h2 className="text-4xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 mb-6">
+                איך זה עובד?
+            </h2>
+            <div className="w-24 h-1 bg-[#C5A059] mx-auto rounded-full shadow-[0_0_15px_#C5A059]"></div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-            {steps.map((step, index) => (
-                <div key={step.id} className="group relative p-8 h-full min-h-[320px] flex flex-col justify-between bg-neutral-900/40 border border-neutral-800 hover:border-[#C5A059]/50 transition-all duration-500 rounded-2xl overflow-hidden">
-                    
-                    {/* Background Gradient on Hover - Replaces heavy blur with performant gradient opacity */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#C5A059]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        {/* Process Flow */}
+        <div className="relative max-w-7xl mx-auto">
+            
+            {/* Connecting Line (Desktop) */}
+            <div className="hidden md:block absolute top-[60px] left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent"></div>
 
-                    {/* Content */}
-                    <div className="relative z-10">
-                        <div className="flex items-center justify-between mb-8">
-                            <span className="text-6xl md:text-7xl font-black text-neutral-800 group-hover:text-neutral-700 transition-colors duration-500 font-mono select-none">
-                                {step.id}
-                            </span>
-                            <div className="w-12 h-[1px] bg-[#C5A059] origin-right transform scale-x-50 group-hover:scale-x-100 transition-transform duration-500"></div>
+            <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+                {steps.map((step, index) => (
+                    <div key={index} className="relative flex flex-col items-center text-center group">
+                        
+                        {/* Circle Icon Container */}
+                        <div className="relative mb-8">
+                            {/* Pulse Effect */}
+                            <div className="absolute inset-0 bg-[#C5A059] rounded-full opacity-0 group-hover:animate-ping duration-1000"></div>
+                            
+                            {/* Main Circle */}
+                            <div className="w-32 h-32 rounded-full bg-black border-2 border-[#C5A059]/30 flex items-center justify-center relative z-10 group-hover:border-[#C5A059] group-hover:shadow-[0_0_40px_rgba(197,160,89,0.2)] transition-all duration-500 ease-out">
+                                <div className="text-[#C5A059] transform group-hover:scale-110 transition-transform duration-500">
+                                    {React.cloneElement(step.icon as React.ReactElement, { size: 40 })}
+                                </div>
+                            </div>
+
+                            {/* Number Bubble */}
+                            <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-neutral-800 border border-[#C5A059] text-[#C5A059] font-mono font-bold flex items-center justify-center text-sm z-20 shadow-lg group-hover:bg-[#C5A059] group-hover:text-black transition-colors duration-300">
+                                {step.num}
+                            </div>
                         </div>
-                        
-                        <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#C5A059] transition-colors duration-300">
-                            {step.title}
-                        </h3>
-                        
-                        <p className="text-gray-400 text-base leading-relaxed group-hover:text-gray-300 transition-colors">
-                            {step.description}
-                        </p>
-                    </div>
 
-                    {/* Bottom Active Indicator */}
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[#C5A059] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                </div>
-            ))}
+                        {/* Content */}
+                        <div className="relative z-10 px-4 md:px-6 transition-transform duration-500 group-hover:-translate-y-2">
+                            <h3 className="text-3xl font-black text-white mb-2 tracking-tight group-hover:text-[#C5A059] transition-colors">
+                                {step.keyword}
+                            </h3>
+                            <h4 className="text-lg font-medium text-gray-400 mb-4 border-b border-gray-800 pb-4 inline-block mx-auto w-full max-w-[200px]">
+                                {step.title}
+                            </h4>
+                            <p className="text-gray-500 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                                {step.description}
+                            </p>
+                        </div>
+
+                    </div>
+                ))}
+            </div>
         </div>
 
       </div>
