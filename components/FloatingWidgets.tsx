@@ -136,7 +136,7 @@ export const FloatingWidgets: React.FC = () => {
       {/* --- RIGHT SIDE: WhatsApp --- */}
       <div className="fixed bottom-6 right-6 z-40">
         <a 
-          href="https://wa.me/972500000000" 
+          href="https://wa.me/972538227778" 
           target="_blank" 
           rel="noopener noreferrer"
           className="bg-[#25D366] text-white p-4 md:p-5 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_25px_rgba(37,211,102,0.6)] transition-all duration-500 group flex items-center gap-0 hover:gap-3 overflow-hidden"
@@ -183,4 +183,102 @@ export const FloatingWidgets: React.FC = () => {
                   onClick={() => setA11yOpen(false)} 
                   className="hover:bg-neutral-800 p-1 rounded transition-colors text-gray-400 hover:text-white"
                 >
-                  <X size
+                  <X size={20} />
+                </button>
+             </div>
+
+             {/* Content */}
+             <div className="p-4 space-y-3 overflow-y-auto">
+                
+                <div className="grid grid-cols-1 gap-2">
+                  <FeatureButton 
+                    icon={ZoomIn} 
+                    label="טקסט גדול" 
+                    isActive={activeFeatures.largeText}
+                    onClick={() => toggleClass('a11y-large-text', 'largeText')}
+                  />
+                  <FeatureButton 
+                    icon={Type} 
+                    label="טקסט ענק" 
+                    isActive={activeFeatures.xlText}
+                    onClick={() => toggleClass('a11y-xl-text', 'xlText')}
+                  />
+                  <FeatureButton 
+                    icon={Sun} 
+                    label="ניגודיות גבוהה" 
+                    isActive={activeFeatures.contrast}
+                    onClick={() => toggleClass('a11y-contrast', 'contrast')}
+                  />
+                  <FeatureButton 
+                    icon={Underline} 
+                    label="הדגשת קישורים" 
+                    isActive={activeFeatures.links}
+                    onClick={() => toggleClass('a11y-links', 'links')}
+                  />
+                  <FeatureButton 
+                    icon={EyeOff} 
+                    label="גווני אפור" 
+                    isActive={activeFeatures.grayscale}
+                    onClick={() => toggleClass('a11y-grayscale', 'grayscale')}
+                  />
+                  <FeatureButton 
+                    icon={Type} 
+                    label="גופן קריא" 
+                    isActive={activeFeatures.readableFont}
+                    onClick={() => toggleClass('a11y-font', 'readableFont')}
+                  />
+                  <FeatureButton 
+                    icon={PauseCircle} 
+                    label="ביטול אנימציות" 
+                    isActive={activeFeatures.noMotion}
+                    onClick={() => toggleClass('a11y-no-motion', 'noMotion')}
+                  />
+                  <FeatureButton 
+                    icon={MousePointer2} 
+                    label="סמן גדול" 
+                    isActive={activeFeatures.cursor}
+                    onClick={() => toggleClass('a11y-cursor', 'cursor')}
+                  />
+                  <FeatureButton 
+                    icon={Heading} 
+                    label="הדגשת כותרות" 
+                    isActive={activeFeatures.headings}
+                    onClick={() => toggleClass('a11y-headings', 'headings')}
+                  />
+                  <FeatureButton 
+                    icon={AlignJustify} 
+                    label="ריווח שורות" 
+                    isActive={activeFeatures.lineHeight}
+                    onClick={() => toggleClass('a11y-line-height', 'lineHeight')}
+                  />
+                  <FeatureButton 
+                    icon={MoveHorizontal} 
+                    label="ריווח אותיות" 
+                    isActive={activeFeatures.letterSpacing}
+                    onClick={() => toggleClass('a11y-letter-spacing', 'letterSpacing')}
+                  />
+                  <FeatureButton 
+                    icon={EyeOff} 
+                    label="הסתרת תמונות" 
+                    isActive={activeFeatures.hideImages}
+                    onClick={() => toggleClass('a11y-hide-images', 'hideImages')}
+                  />
+                </div>
+             </div>
+
+             {/* Footer */}
+             <div className="p-4 bg-black/50 border-t border-neutral-800 shrink-0">
+                <button 
+                  onClick={resetAccessibility}
+                  className="w-full flex items-center justify-center gap-2 text-red-400 hover:text-red-300 font-bold p-2 transition-colors"
+                >
+                  <RotateCcw size={16} />
+                  אפס את כל ההגדרות
+                </button>
+             </div>
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
