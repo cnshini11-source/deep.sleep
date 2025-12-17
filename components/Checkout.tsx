@@ -11,7 +11,6 @@ export const Checkout: React.FC = () => {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would integrate with a real payment processor
     alert('תודה על הזמנתך! (זוהי הדגמה - ההזמנה נקלטה במערכת)');
   };
 
@@ -62,15 +61,18 @@ export const Checkout: React.FC = () => {
                 </div>
              </div>
 
-             {/* Trust Badges - Grid for mobile */}
+             {/* Trust Badges */}
              <div className="grid grid-cols-2 gap-3 md:gap-4">
                 <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300 bg-neutral-800/50 p-2 rounded-lg">
                    <ShieldCheck className="text-[#C5A059] flex-shrink-0" size={18} />
-                   <span>אחריות לשנה</span>
+                   <span>אבטחה מלאה</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300 bg-neutral-800/50 p-2 rounded-lg">
+                <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300 bg-neutral-800/50 p-2 rounded-lg border border-green-500/20">
                    <Truck className="text-[#C5A059] flex-shrink-0" size={18} />
-                   <span>משלוח מהיר</span>
+                   <div className="flex flex-col">
+                      <span className="font-bold text-white">משלוח מהיר</span>
+                      <span className="text-[10px] opacity-70">2-4 ימי עסקים</span>
+                   </div>
                 </div>
                 <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300 bg-neutral-800/50 p-2 rounded-lg">
                    <Lock className="text-[#C5A059] flex-shrink-0" size={18} />
