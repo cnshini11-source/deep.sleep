@@ -8,7 +8,11 @@ import {
   Type, 
   EyeOff, 
   PauseCircle, 
-  RotateCcw 
+  RotateCcw,
+  MousePointer2,
+  Heading,
+  AlignJustify,
+  MoveHorizontal
 } from 'lucide-react';
 
 export const FloatingWidgets: React.FC = () => {
@@ -23,6 +27,11 @@ export const FloatingWidgets: React.FC = () => {
     links: false,
     readableFont: false,
     noMotion: false,
+    cursor: false,
+    headings: false,
+    hideImages: false,
+    lineHeight: false,
+    letterSpacing: false
   });
 
   const toggleClass = (className: string, key: string) => {
@@ -72,7 +81,12 @@ export const FloatingWidgets: React.FC = () => {
       'a11y-links', 
       'a11y-grayscale',
       'a11y-font',
-      'a11y-no-motion'
+      'a11y-no-motion',
+      'a11y-cursor',
+      'a11y-headings',
+      'a11y-hide-images',
+      'a11y-line-height',
+      'a11y-letter-spacing'
     );
     setActiveFeatures({
       largeText: false,
@@ -82,6 +96,11 @@ export const FloatingWidgets: React.FC = () => {
       links: false,
       readableFont: false,
       noMotion: false,
+      cursor: false,
+      headings: false,
+      hideImages: false,
+      lineHeight: false,
+      letterSpacing: false
     });
   };
 
@@ -164,77 +183,4 @@ export const FloatingWidgets: React.FC = () => {
                   onClick={() => setA11yOpen(false)} 
                   className="hover:bg-neutral-800 p-1 rounded transition-colors text-gray-400 hover:text-white"
                 >
-                  <X size={20} />
-                </button>
-             </div>
-
-             {/* Content */}
-             <div className="p-4 space-y-3 overflow-y-auto custom-scrollbar">
-                
-                <div className="grid grid-cols-2 gap-2">
-                  <FeatureButton 
-                    icon={ZoomIn} 
-                    label="טקסט גדול" 
-                    isActive={activeFeatures.largeText}
-                    onClick={() => toggleClass('a11y-large-text', 'largeText')} 
-                  />
-                  <FeatureButton 
-                    icon={ZoomIn} 
-                    label="טקסט ענק" 
-                    isActive={activeFeatures.xlText}
-                    onClick={() => toggleClass('a11y-xl-text', 'xlText')} 
-                  />
-                </div>
-
-                <FeatureButton 
-                  icon={Sun} 
-                  label="ניגודיות גבוהה" 
-                  isActive={activeFeatures.contrast}
-                  onClick={() => toggleClass('a11y-contrast', 'contrast')} 
-                />
-
-                <FeatureButton 
-                  icon={EyeOff} 
-                  label="גווני אפור" 
-                  isActive={activeFeatures.grayscale}
-                  onClick={() => toggleClass('a11y-grayscale', 'grayscale')} 
-                />
-
-                <FeatureButton 
-                  icon={Underline} 
-                  label="הדגשת קישורים" 
-                  isActive={activeFeatures.links}
-                  onClick={() => toggleClass('a11y-links', 'links')} 
-                />
-
-                <FeatureButton 
-                  icon={Type} 
-                  label="פונט קריא (Arial)" 
-                  isActive={activeFeatures.readableFont}
-                  onClick={() => toggleClass('a11y-font', 'readableFont')} 
-                />
-
-                <FeatureButton 
-                  icon={PauseCircle} 
-                  label="עצור אנימציות" 
-                  isActive={activeFeatures.noMotion}
-                  onClick={() => toggleClass('a11y-no-motion', 'noMotion')} 
-                />
-
-                <div className="pt-2 mt-2 border-t border-neutral-800">
-                  <button 
-                    onClick={resetAccessibility} 
-                    className="w-full py-2 flex items-center justify-center gap-2 text-red-400 font-medium hover:bg-red-900/20 rounded-lg transition-colors"
-                  >
-                    <RotateCcw size={16} />
-                    איפוס הגדרות
-                  </button>
-                </div>
-
-             </div>
-          </div>
-        )}
-      </div>
-    </>
-  );
-};
+                  <X size

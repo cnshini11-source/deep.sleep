@@ -135,8 +135,23 @@
       .a11y-xl-text { font-size: 125%; }
       .a11y-contrast { filter: contrast(175%); }
       .a11y-grayscale { filter: grayscale(100%); }
-      .a11y-links a { text-decoration: underline !important; text-decoration-color: #ffff00 !important; }
+      .a11y-links a { text-decoration: underline !important; text-decoration-color: #ffff00 !important; font-weight: bold; }
       .a11y-no-motion *, .a11y-no-motion body { animation: none !important; transition: none !important; }
+      
+      /* Advanced Accessibility */
+      .a11y-font, .a11y-font * { font-family: Arial, Helvetica, sans-serif !important; letter-spacing: 0.05em; }
+      .a11y-hide-images img, .a11y-hide-images svg:not(.a11y-icon) { opacity: 0 !important; }
+      .a11y-headings h1, .a11y-headings h2, .a11y-headings h3, .a11y-headings h4, .a11y-headings h5, .a11y-headings h6 { 
+        background-color: #C5A059 !important; 
+        color: #000 !important; 
+        padding: 4px;
+        border-radius: 4px;
+      }
+      .a11y-cursor, .a11y-cursor * { cursor: crosshair !important; }
+      
+      /* New A11y Expansions */
+      .a11y-line-height, .a11y-line-height * { line-height: 2 !important; }
+      .a11y-letter-spacing, .a11y-letter-spacing * { letter-spacing: 0.15em !important; word-spacing: 0.2em !important; }
     </style>
   <script type="importmap">
 {

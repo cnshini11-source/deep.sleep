@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from './Button';
+import { TrendingUp } from 'lucide-react';
 
 interface HeroProps {
   onNavigateCheckout: () => void;
@@ -25,7 +26,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigateCheckout }) => {
           className="w-full h-full object-cover object-center md:object-[center_30%] group-hover:scale-105 transition-transform duration-700 will-change-transform"
         />
         
-        {/* Mobile Gradient: Stronger from bottom/right to allow text readability */}
+        {/* Mobile Gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30 md:bg-gradient-to-l md:from-black md:via-black/80 md:to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black to-transparent"></div>
       </div>
@@ -52,10 +53,21 @@ export const Hero: React.FC<HeroProps> = ({ onNavigateCheckout }) => {
               <span className="font-bold text-white">מכשיר חכם נגד נחירות</span> + כיסוי עיניים ומגבירי זרימת אוויר בקופסה אחת יוקרתית.
             </p>
 
-            <div className="animate-slide-up delay-300 flex flex-col sm:flex-row gap-5 justify-center md:justify-start pt-4 md:pt-6">
+            <div className="animate-slide-up delay-300 flex flex-col md:flex-row items-center gap-6 justify-center md:justify-start pt-4 md:pt-6">
               <Button onClick={onNavigateCheckout} className="text-lg md:text-xl px-10 py-4 border border-[#C5A059]/50 shadow-[0_0_25px_rgba(197,160,89,0.3)] w-full sm:w-auto">
                 רכשו עכשיו
               </Button>
+
+              {/* Limited Stock Indicator */}
+              <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 group cursor-default hover:border-red-500/50 transition-colors">
+                  <span className="relative flex h-2 w-2 order-1">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                  </span>
+                  <span className="text-gray-300 text-xs md:text-sm font-medium tracking-wide group-hover:text-red-400 transition-colors order-2">
+                      מלאי מוגבל
+                  </span>
+              </div>
             </div>
 
             <div className="animate-fade-in delay-300 flex items-center justify-center md:justify-start gap-4 md:gap-8 text-xs md:text-sm text-gray-300 pt-6 md:pt-8 border-t border-gray-700/50 mt-6 w-full md:w-fit mx-auto md:mx-0">
