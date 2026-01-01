@@ -9,7 +9,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ currentView = 'home', onViewChange }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
@@ -75,9 +75,14 @@ export const Header: React.FC<HeaderProps> = ({ currentView = 'home', onViewChan
         }`}
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo - Text Only "SHINI" in Delicate Gold */}
           <div onClick={goHome} className="cursor-pointer relative z-50">
-            <h1 className="text-2xl md:text-3xl font-black tracking-widest text-gradient-gold">SHINI</h1>
+            <h1 
+              className="text-3xl md:text-4xl font-black tracking-[0.15em] leading-none transition-all duration-300 select-none"
+              style={{ color: '#C5A059' }}
+            >
+              SHINI
+            </h1>
           </div>
 
           {/* Desktop Menu */}

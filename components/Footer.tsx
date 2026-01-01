@@ -7,6 +7,9 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => {
+  // CANONICAL BRAND LOGO
+  const LOGO_URL = "https://i.imgur.com/jXZLAcX.jpeg";
+
   const handleNavigation = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
     if (currentView !== 'home') {
@@ -30,7 +33,14 @@ export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => 
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           
           <div className="col-span-1 md:col-span-1">
-            <h2 className="text-3xl font-black tracking-widest text-[#C5A059] mb-4">SHINI</h2>
+            <img 
+              src={LOGO_URL} 
+              alt="Shini Logo" 
+              loading="lazy"
+              width="600"
+              height="200"
+              className="h-20 w-auto mb-6 mx-auto md:mx-0 object-contain"
+            />
             <p className="text-gray-500 text-sm leading-relaxed">
               אנחנו ב-Shini מאמינים ששינה טובה היא הבסיס לחיים טובים. הערכה שלנו פותחה כדי לתת לכם ולבני הזוג שלכם שקט נפשי (ושינה שקטה).
             </p>
