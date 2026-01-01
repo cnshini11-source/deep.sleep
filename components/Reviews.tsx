@@ -123,6 +123,9 @@ export const Reviews: React.FC = () => {
                       src={review.avatar} 
                       alt={review.name}
                       loading="lazy"
+                      decoding="async"
+                      width="48"
+                      height="48"
                       className="w-12 h-12 rounded-full object-cover border border-neutral-700 group-hover:border-[#C5A059] transition-colors"
                      />
                   </div>

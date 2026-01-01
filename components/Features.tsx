@@ -60,6 +60,8 @@ export const Features: React.FC = () => {
                     alt={feature.title}
                     loading="lazy"
                     decoding="async"
+                    width="400"
+                    height="450"
                     className="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-transform duration-500 ease-out will-change-transform"
                   />
                 )}

@@ -67,6 +67,8 @@ export const Checkout: React.FC = () => {
                    <img 
                       src={PRODUCT_IMAGE_URL}
                       alt="Shini Deep Sleep Pro" 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover"
                    />
                 </div>

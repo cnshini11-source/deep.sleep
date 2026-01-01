@@ -37,6 +37,7 @@ export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => 
               src={LOGO_URL} 
               alt="Shini Logo" 
               loading="lazy"
+              decoding="async"
               width="600"
               height="200"
               className="h-20 w-auto mb-6 mx-auto md:mx-0 object-contain"

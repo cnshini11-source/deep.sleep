@@ -64,6 +64,8 @@ export const MechanismExplainer: React.FC = () => {
          <img 
             src="https://i.imgur.com/nSd9XBi.jpeg" 
             alt="" 
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover opacity-20 mix-blend-screen grayscale"
          />
       </div>
@@ -123,6 +125,8 @@ export const MechanismExplainer: React.FC = () => {
                          <img 
                            src="https://i.imgur.com/nSd9XBi.jpeg" 
                            alt="Instruction Background" 
+                           loading="lazy"
+                           decoding="async"
                            className="w-full h-full object-cover opacity-40 mix-blend-luminosity"
                          />
                          {/* Gradient Overlay for text readability */}
@@ -213,6 +217,8 @@ const CoreAnimation = () => (
                <img 
                  src="https://i.imgur.com/nSd9XBi.jpeg" 
                  alt="Smart EMS In Use" 
+                 loading="lazy"
+                 decoding="async"
                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
                />
                <div className="absolute inset-0 bg-blue-900/10 mix-blend-overlay"></div>

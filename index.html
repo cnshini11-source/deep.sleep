@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     
+    <!-- PERFORMANCE: Preconnect to Image CDN -->
+    <link rel="preconnect" href="https://i.imgur.com" crossorigin />
+    <link rel="dns-prefetch" href="https://i.imgur.com" />
+    
+    <!-- PERFORMANCE: Preload Hero Image (LCP) -->
+    <link rel="preload" as="image" href="https://i.imgur.com/R4A8pSJ.png" fetchpriority="high" />
+
     <!-- FAVICONS - FORCING CANONICAL LOGO -->
     <link rel="icon" href="https://i.imgur.com/jXZLAcX.jpeg" />
     <link rel="icon" type="image/jpeg" sizes="16x16" href="https://i.imgur.com/jXZLAcX.jpeg" />
