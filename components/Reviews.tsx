@@ -5,44 +5,44 @@ import { Review } from '../types';
 const reviews: Review[] = [
   {
     id: 1,
-    name: "רועי א.",
+    name: "רונן כהן",
     rating: 5,
-    text: "אשכרה הפסקתי להתעורר מהנחירות של עצמי. אשתי מודה לכם כל בוקר מחדש. מוצר חובה לכל מי שסובל מזה.",
+    text: "תשמעו הייתי סקפטי רצח. אשתי כבר איימה שאני אשן בסלון. הזמנתי את זה כמוצא אחרון, שמתי בלילה הראשון - שקט. פשוט שקט. היא קמה בבוקר שאלה אם אני חי. הצלתם לי את הזוגיות.",
     avatar: "https://randomuser.me/api/portraits/men/32.jpg"
   },
   {
     id: 2,
-    name: "קרן ל.",
+    name: "דנית לוי",
     rating: 5,
-    text: "המסכה לעיניים מושלמת, אני נרדמת הרבה יותר מהר. הכל מרגיש סופר איכותי ויוקרתי, אריזה מהממת.",
+    text: "בתור אחת שיש לה שינה קלה, בעלי היה פשוט טרקטור בלילה. קניתי לו את הערכה, המכשיר הקטן הזה פשוט גאוני. הוא לא מרגיש את זה, ואני סוף סוף ישנה לילה רצוף. שווה כל שקל.",
     avatar: "https://randomuser.me/api/portraits/women/44.jpg"
   },
   {
     id: 3,
-    name: "לירן ג.",
+    name: "אביב מ.",
     rating: 5,
-    text: "הערכה נראית מתנה יוקרתית, לקחתי גם לאבא שלי והוא מבסוט עליה מאוד. משלוח מהיר ושירות מעולה.",
+    text: "וואלה עובד. ניסיתי מדבקות, ניסיתי תרסיסים, כלום לא עזר. זה הדבר היחיד שבאמת משתיק את הנחירות. הכיסוי עיניים שמגיע עם זה זה בונוס נחמד לאללה.",
     avatar: "https://randomuser.me/api/portraits/men/86.jpg"
   },
   {
     id: 4,
-    name: "דניאל ש.",
+    name: "יגאל ש.",
     rating: 5,
-    text: "ניסיתי המון פתרונות לנחירות, זה היחיד שלא הציק לי באף והצליח להפחית את הרעש בצורה משמעותית.",
+    text: "מוצר הצגה. מגיע ארוז יפה, המכשיר נטען, שם את זה מתחת לסנטר וזהו. לא מציק, לא לוחץ. קמתי בבוקר פחות עייף מהרגיל. מבסוט עליכם.",
     avatar: "https://randomuser.me/api/portraits/men/11.jpg"
   },
   {
     id: 5,
-    name: "מיכל פ.",
+    name: "מירי גולן",
     rating: 5,
-    text: "איכות ברמה אחרת. הקופסה המגנטית נוחה מאוד לנסיעות. שווה כל שקל למי שחשובה לו השינה.",
+    text: "הזמנתי לבעלי, הגיע תוך יומיים עם שליח. הוא משתמש בזה כבר שבוע והשינוי מטורף. אין יותר 'ניסורים' באמצע הלילה. ממליצה בחום למי שרוצה לישון בשקט.",
     avatar: "https://randomuser.me/api/portraits/women/68.jpg"
   },
   {
     id: 6,
     name: "יוסי ב.",
     rating: 5,
-    text: "פשוט עובד. הלילה הראשון היה קצת מוזר אבל מהלילה השני אני ישן כמו תינוק. מומלץ בחום.",
+    text: "תכלס? הופתעתי לטובה. זה קטן, לא מורגש וכנראה עושה את העבודה כי אשתי הפסיקה לבעוט בי בלילה. אחלה מכשיר.",
     avatar: "https://randomuser.me/api/portraits/men/46.jpg"
   }
 ];
@@ -65,13 +65,13 @@ export const Reviews: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="text-center md:text-right w-full md:w-auto">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">סיפורי הצלחה</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">מה אנשים באמת חושבים?</h2>
             <div className="flex items-center justify-center md:justify-start gap-3">
               <div className="flex gap-1">
                 {[1,2,3,4,5].map(i => <Star key={i} size={20} className="fill-[#C5A059] text-[#C5A059]" />)}
               </div>
               <span className="text-gray-400 font-medium border-r border-gray-700 pr-3 mr-3">
-                4.9/5 מתוך מאות ביקורות
+                4.9/5 מתוך מאות ביקורות מאומתות
               </span>
             </div>
           </div>

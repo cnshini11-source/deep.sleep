@@ -48,6 +48,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigateCheckout }) => {
               </span>
             </h1>
 
+            <p className="animate-slide-in-right delay-300 text-xl md:text-3xl text-[#C5A059] font-bold mt-1">
+              הפתרון לנחירות ושינה עמוקה
+            </p>
+
             <p className="animate-slide-up delay-300 text-lg md:text-2xl text-gray-200 font-light leading-relaxed max-w-lg mx-auto md:mx-0 drop-shadow-md">
               ערכת השינה האולטימטיבית. <br/>
               <span className="font-bold text-white">מכשיר חכם נגד נחירות</span> + כיסוי עיניים ומגבירי זרימת אוויר בקופסה אחת יוקרתית.

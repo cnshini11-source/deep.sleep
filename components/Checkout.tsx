@@ -62,7 +62,7 @@ export const Checkout: React.FC = () => {
                 <p className="text-gray-400">ההזמנה תגיע עד אליך, ותשלום יתבצע במזומן בעת מסירה.</p>
              </div>
 
-             <div className="bg-black p-4 md:p-6 rounded-2xl border border-neutral-800 flex flex-row gap-4 md:gap-6 items-start">
+             <div className="bg-black p-4 md:p-6 rounded-2xl border border-neutral-800 flex flex-row gap-4 md:gap-6 items-start shadow-xl">
                 <div className="w-24 h-24 md:w-32 md:h-32 bg-neutral-800 rounded-lg flex-shrink-0 overflow-hidden">
                    <img 
                       src={PRODUCT_IMAGE_URL}
@@ -97,36 +97,37 @@ export const Checkout: React.FC = () => {
                 </div>
              </div>
 
-             {/* Modern Trust Badges Grid */}
-             <div className="grid grid-cols-2 gap-4">
-                <div className="flex flex-col items-center p-5 rounded-2xl bg-neutral-800/30 border border-white/5 hover:border-[#C5A059]/30 hover:bg-neutral-800/50 transition-all duration-300 group text-center backdrop-blur-sm">
-                   <div className="w-12 h-12 rounded-full bg-[#C5A059]/10 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-[#C5A059]/20 transition-all duration-300 shadow-[0_0_15px_rgba(197,160,89,0.05)]">
-                      <ShieldCheck className="text-[#C5A059]" size={22} />
+             {/* Minimal Trust Icons Row */}
+             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-neutral-800">
+                <div className="flex flex-col items-center text-center gap-2 group">
+                   <ShieldCheck className="text-[#C5A059] group-hover:scale-110 transition-transform duration-300" size={28} strokeWidth={1.5} />
+                   <div className="flex flex-col">
+                      <span className="text-sm font-bold text-gray-200">אחריות יצרן מלאה</span>
                    </div>
-                   <span className="text-sm font-bold text-gray-200">אחריות יצרן מלאה</span>
                 </div>
                 
-                <div className="flex flex-col items-center p-5 rounded-2xl bg-neutral-800/30 border border-white/5 hover:border-[#C5A059]/30 hover:bg-neutral-800/50 transition-all duration-300 group text-center backdrop-blur-sm">
-                   <div className="w-12 h-12 rounded-full bg-[#C5A059]/10 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-[#C5A059]/20 transition-all duration-300 shadow-[0_0_15px_rgba(197,160,89,0.05)]">
-                       <Truck className="text-[#C5A059]" size={22} />
+                <div className="flex flex-col items-center text-center gap-2 group">
+                   <Truck className="text-[#C5A059] group-hover:scale-110 transition-transform duration-300" size={28} strokeWidth={1.5} />
+                   <div className="flex flex-col">
+                      <span className="text-sm font-bold text-gray-200">משלוח מהיר</span>
+                      <span className="text-[10px] text-gray-500 font-mono">2-4 ימי עסקים</span>
                    </div>
-                   <span className="text-sm font-bold text-gray-200">משלוח מהיר</span>
-                   <span className="text-xs text-gray-500 mt-1 font-mono">2-4 ימי עסקים</span>
                 </div>
 
-                <div className="flex flex-col items-center p-5 rounded-2xl bg-neutral-800/30 border border-white/5 hover:border-[#C5A059]/30 hover:bg-neutral-800/50 transition-all duration-300 group text-center backdrop-blur-sm">
-                   <div className="w-12 h-12 rounded-full bg-[#C5A059]/10 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-[#C5A059]/20 transition-all duration-300 shadow-[0_0_15px_rgba(197,160,89,0.05)]">
-                      <Banknote className="text-[#C5A059]" size={22} />
+                <div className="flex flex-col items-center text-center gap-2 group">
+                   <Banknote className="text-[#C5A059] group-hover:scale-110 transition-transform duration-300" size={28} strokeWidth={1.5} />
+                   <div className="flex flex-col">
+                      <span className="text-sm font-bold text-gray-200">תשלום במזומן</span>
+                      <span className="text-[10px] text-gray-500">אצל השליח</span>
                    </div>
-                   <span className="text-sm font-bold text-gray-200">תשלום במזומן</span>
-                   <span className="text-xs text-gray-500 mt-1">אצל השליח</span>
                 </div>
 
-                <div className="flex flex-col items-center p-5 rounded-2xl bg-neutral-800/30 border border-white/5 hover:border-[#C5A059]/30 hover:bg-neutral-800/50 transition-all duration-300 group text-center backdrop-blur-sm">
-                   <div className="w-12 h-12 rounded-full bg-[#C5A059]/10 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-[#C5A059]/20 transition-all duration-300 shadow-[0_0_15px_rgba(197,160,89,0.05)]">
-                      <RefreshCw className="text-[#C5A059]" size={22} />
+                <div className="flex flex-col items-center text-center gap-2 group">
+                   <RefreshCw className="text-[#C5A059] group-hover:scale-110 transition-transform duration-300" size={28} strokeWidth={1.5} />
+                   <div className="flex flex-col">
+                      <span className="text-sm font-bold text-gray-200">מדיניות החזרים</span>
+                      <span className="text-[10px] text-gray-500">עד 14 יום</span>
                    </div>
-                   <span className="text-sm font-bold text-gray-200">מדיניות החזרים</span>
                 </div>
              </div>
           </div>
@@ -227,33 +228,6 @@ export const Checkout: React.FC = () => {
                 </div>
             )}
           </div>
-        </div>
-
-        {/* SEO Text Section */}
-        <div className="max-w-4xl mx-auto text-center border-t border-neutral-800 pt-16">
-            <h2 className="text-3xl font-bold text-white mb-6">למה לבחור בשיני?</h2>
-            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-                המכשיר <strong>שיני</strong> מסייע להפחתת נחירות, לשינה רגועה יותר, ולשיפור איכות החיים של כל בני הבית. בטוח לשימוש, נוח וקל לניקוי.
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-6 text-right max-w-2xl mx-auto">
-                <div className="bg-neutral-800/50 p-4 rounded-xl flex items-center gap-3 border border-neutral-700">
-                    <div className="w-2 h-2 bg-[#C5A059] rounded-full shrink-0"></div>
-                    <span className="text-gray-200">הפחתת נחירות משמעותית</span>
-                </div>
-                <div className="bg-neutral-800/50 p-4 rounded-xl flex items-center gap-3 border border-neutral-700">
-                    <div className="w-2 h-2 bg-[#C5A059] rounded-full shrink-0"></div>
-                    <span className="text-gray-200">שימוש קל ונוח</span>
-                </div>
-                <div className="bg-neutral-800/50 p-4 rounded-xl flex items-center gap-3 border border-neutral-700">
-                    <div className="w-2 h-2 bg-[#C5A059] rounded-full shrink-0"></div>
-                    <span className="text-gray-200">שליח עד הבית ותשלום במזומן</span>
-                </div>
-                <div className="bg-neutral-800/50 p-4 rounded-xl flex items-center gap-3 border border-neutral-700">
-                    <div className="w-2 h-2 bg-[#C5A059] rounded-full shrink-0"></div>
-                    <span className="text-gray-200">מותג איכותי ואמין – שיני</span>
-                </div>
-            </div>
         </div>
       </div>
     </section>

@@ -9,10 +9,12 @@ import { Checkout } from './components/Checkout';
 import { Footer } from './components/Footer';
 import { Terms } from './components/Terms';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { RefundPolicy } from './components/RefundPolicy';
+import { AccessibilityStatement } from './components/AccessibilityStatement';
 import { FloatingWidgets } from './components/FloatingWidgets';
 
 function App() {
-  const [view, setView] = useState<'home' | 'checkout' | 'terms' | 'privacy'>('home');
+  const [view, setView] = useState<'home' | 'checkout' | 'terms' | 'privacy' | 'refunds' | 'accessibility'>('home');
 
   useEffect(() => {
     // Ensure smooth scroll to top when switching views
@@ -49,6 +51,18 @@ function App() {
         {view === 'privacy' && (
           <div className="animate-page-enter">
             <PrivacyPolicy onBack={() => setView('home')} />
+          </div>
+        )}
+
+        {view === 'refunds' && (
+          <div className="animate-page-enter">
+            <RefundPolicy onBack={() => setView('home')} />
+          </div>
+        )}
+
+        {view === 'accessibility' && (
+          <div className="animate-page-enter">
+            <AccessibilityStatement onBack={() => setView('home')} />
           </div>
         )}
       </main>

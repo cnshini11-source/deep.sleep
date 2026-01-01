@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Zap, Activity, Mic2, CheckCircle2, Info, Smartphone } from 'lucide-react';
+import { Cpu, Zap, Activity, Mic2, CheckCircle2, Smartphone } from 'lucide-react';
 
 export const MechanismExplainer: React.FC = () => {
   const features = [
@@ -38,9 +38,18 @@ export const MechanismExplainer: React.FC = () => {
   ];
 
   const usageSteps = [
-    { label: "התאמה", text: "מקמו את המכשיר במרכז הסנטר מתחת ללסת להצמדה מלאה." },
-    { label: "הפעלה", text: "לחצו לחיצה ארוכה (3 שניות) על כפתור ההפעלה." },
-    { label: "שינה", text: "לכו לישון. המכשיר עובד אוטומטית ובשקט מוחלט." }
+    { 
+      label: "התאמה מושלמת", 
+      text: "הצמידו את המכשיר למרכז הסנטר (מתחת ללסת) באמצעות המדבקה המוליכה. ודאו שהעור נקי ויבש למגע אופטימלי וזיהוי מדויק של רטט מיתרי הקול." 
+    },
+    { 
+      label: "הפעלה חכמה", 
+      text: "לחצו לחיצה ארוכה (3 שניות) על כפתור ההפעלה עד להופעת חיווי האור. המערכת תבצע כיול קצר ותכנס למצב המתנה חכם באופן מיידי." 
+    },
+    { 
+      label: "שינה עמוקה", 
+      text: "פשוט צוללים לעולם החלומות. המכשיר ינטר את הנשימה בזמן אמת, יזהה נחירות ויפסיק אותן בעדינות מבלי שתהיו מודעים לכך." 
+    }
   ];
 
   return (
@@ -107,26 +116,48 @@ export const MechanismExplainer: React.FC = () => {
 
             {/* Integration Instructions */}
             <div className="mt-24 md:mt-32">
-                <div className="bg-gradient-to-br from-neutral-900/80 to-black border border-[#C5A059]/20 rounded-3xl p-8 md:p-12 backdrop-blur-xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+                <div className="relative border border-[#C5A059]/30 rounded-3xl p-8 md:p-12 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+                    
+                    {/* NEW Background Image with Overlay for "How To Use" */}
+                    <div className="absolute inset-0 z-0">
+                         <img 
+                           src="https://i.imgur.com/nSd9XBi.jpeg" 
+                           alt="Instruction Background" 
+                           className="w-full h-full object-cover opacity-40 mix-blend-luminosity"
+                         />
+                         {/* Gradient Overlay for text readability */}
+                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/80"></div>
+                    </div>
+
+                    <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none z-10">
                         <Smartphone size={120} className="text-white" />
                     </div>
                     
-                    <div className="flex flex-col md:flex-row items-center gap-10">
-                        <div className="text-center md:text-right md:w-1/3">
-                            <h3 className="text-2xl md:text-3xl font-black text-white mb-4">איך משתמשים נכון?</h3>
-                            <p className="text-gray-400">פשוט, מהיר ואפקטיבי. פחות מ-30 שניות ואתם מוכנים לשינה שקטה.</p>
+                    <div className="relative z-10 flex flex-col md:flex-row items-stretch gap-10">
+                        <div className="text-center md:text-right md:w-1/3 flex flex-col justify-center">
+                            <h3 className="text-3xl md:text-4xl font-black text-white mb-4 leading-tight">
+                                איך משתמשים <span className="text-[#C5A059]">נכון?</span>
+                            </h3>
+                            <p className="text-gray-400 text-lg">פשוט, מהיר ואפקטיבי. פחות מ-30 שניות ואתם מוכנים לשינה שקטה ואיכותית.</p>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full md:w-2/3">
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full md:w-2/3">
                             {usageSteps.map((step, idx) => (
-                                <div key={idx} className="bg-black/40 border border-white/5 p-6 rounded-2xl group hover:border-[#C5A059]/30 transition-all duration-300">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <div className="w-8 h-8 rounded-full bg-[#C5A059] text-black flex items-center justify-center font-bold text-sm">
+                                <div key={idx} className="relative bg-black/60 border border-white/5 p-6 rounded-2xl group hover:border-[#C5A059]/50 hover:bg-neutral-900/80 transition-all duration-500 overflow-hidden flex flex-col">
+                                    {/* Big Number Background */}
+                                    <div className="absolute -bottom-4 -left-4 text-9xl font-black text-[#C5A059]/5 select-none pointer-events-none group-hover:text-[#C5A059]/10 transition-colors">
+                                        {idx + 1}
+                                    </div>
+
+                                    <div className="flex items-center gap-3 mb-4 relative z-10">
+                                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#C5A059] to-[#8E7036] text-black flex items-center justify-center font-bold text-sm shadow-[0_0_15px_rgba(197,160,89,0.3)]">
                                             {idx + 1}
                                         </div>
                                         <h4 className="font-bold text-white text-lg">{step.label}</h4>
                                     </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed">{step.text}</p>
+                                    <p className="text-gray-400 text-sm leading-relaxed relative z-10 font-light group-hover:text-gray-200 transition-colors">
+                                        {step.text}
+                                    </p>
                                 </div>
                             ))}
                         </div>
@@ -200,8 +231,6 @@ const CoreAnimation = () => (
                     </span>
                  </div>
             </div>
-            
-            {/* Scanning Line REMOVED */}
         </div>
     </div>
 );

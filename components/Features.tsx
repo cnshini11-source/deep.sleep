@@ -50,7 +50,7 @@ export const Features: React.FC = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="group relative h-[450px] rounded-3xl overflow-hidden border border-white/5 bg-neutral-900 shadow-xl transition-all duration-300 hover:border-[#C5A059]/50"
+              className="group relative h-[450px] rounded-3xl overflow-hidden border border-[#C5A059]/20 bg-neutral-900 transition-all duration-500 hover:scale-[1.02] shadow-[0_0_25px_rgba(197,160,89,0.2)] hover:shadow-[0_0_50px_rgba(197,160,89,0.5)] hover:border-[#C5A059]"
             >
               {/* Background Image - Lazy Loaded */}
               <div className="absolute inset-0 bg-neutral-900">

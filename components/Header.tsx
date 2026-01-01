@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 interface HeaderProps {
-  currentView?: 'home' | 'checkout' | 'terms' | 'privacy';
-  onViewChange?: (view: 'home' | 'checkout' | 'terms' | 'privacy') => void;
+  currentView?: 'home' | 'checkout' | 'terms' | 'privacy' | 'refunds' | 'accessibility';
+  onViewChange?: (view: 'home' | 'checkout' | 'terms' | 'privacy' | 'refunds' | 'accessibility') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ currentView = 'home', onViewChange }) => {

@@ -2,8 +2,8 @@ import React from 'react';
 import { Instagram, Facebook, Mail, Phone, MessageCircle } from 'lucide-react';
 
 interface FooterProps {
-  currentView?: 'home' | 'checkout' | 'terms' | 'privacy';
-  onViewChange?: (view: 'home' | 'checkout' | 'terms' | 'privacy') => void;
+  currentView?: 'home' | 'checkout' | 'terms' | 'privacy' | 'refunds' | 'accessibility';
+  onViewChange?: (view: 'home' | 'checkout' | 'terms' | 'privacy' | 'refunds' | 'accessibility') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => {
@@ -19,14 +19,9 @@ export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => 
     }
   };
 
-  const handleTermsClick = (e: React.MouseEvent) => {
+  const handleLinkClick = (view: 'terms' | 'privacy' | 'refunds' | 'accessibility', e: React.MouseEvent) => {
     e.preventDefault();
-    onViewChange?.('terms');
-  };
-
-  const handlePrivacyClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    onViewChange?.('privacy');
+    onViewChange?.(view);
   };
 
   return (
@@ -54,10 +49,10 @@ export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => 
           <div className="col-span-1">
             <h4 className="text-white font-bold mb-4">משפטיות</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li><a href="#" onClick={handleTermsClick} className="hover:text-[#C5A059] transition-colors">תנאי שימוש</a></li>
-              <li><a href="#" onClick={handlePrivacyClick} className="hover:text-[#C5A059] transition-colors">מדיניות פרטיות</a></li>
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">מדיניות החזרים</a></li>
-              <li><a href="#" className="hover:text-[#C5A059] transition-colors">הצהרת נגישות</a></li>
+              <li><a href="#" onClick={(e) => handleLinkClick('terms', e)} className="hover:text-[#C5A059] transition-colors">תנאי שימוש</a></li>
+              <li><a href="#" onClick={(e) => handleLinkClick('privacy', e)} className="hover:text-[#C5A059] transition-colors">מדיניות פרטיות</a></li>
+              <li><a href="#" onClick={(e) => handleLinkClick('refunds', e)} className="hover:text-[#C5A059] transition-colors">מדיניות החזרים</a></li>
+              <li><a href="#" onClick={(e) => handleLinkClick('accessibility', e)} className="hover:text-[#C5A059] transition-colors">הצהרת נגישות</a></li>
             </ul>
           </div>
 
@@ -68,7 +63,7 @@ export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => 
                 <Mail size={16} /> support@shini-sleep.co.il
               </li>
               <li className="flex items-center justify-center md:justify-start gap-2">
-                <Phone size={16} /> 050-0000000
+                <Phone size={16} /> 053-8227778
               </li>
               <li className="flex items-center justify-center md:justify-start gap-2">
                 <MessageCircle size={16} /> זמינים בווצאפ
