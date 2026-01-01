@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigateCheckout }) => {
 
             <h1 className="animate-slide-in-right delay-200 text-4xl sm:text-5xl md:text-8xl font-black leading-tight text-white drop-shadow-xl">
               SHINI
-              <span className="block text-2xl sm:text-3xl md:text-5xl mt-2 font-light tracking-[0.15em] text-gray-200">
+              <span className="block text-2xl sm:text-3xl md:text-5xl mt-2 font-black tracking-[0.15em] text-gray-200">
                 DEEP SLEEP PRO
               </span>
             </h1>

@@ -59,7 +59,7 @@ export const Checkout: React.FC = () => {
           <div className="space-y-6 lg:space-y-8 order-1 lg:order-1">
              <div className="text-center lg:text-right">
                 <h2 className="text-2xl md:text-4xl font-bold mb-2 text-white">הזמנה עם שליח עד הבית</h2>
-                <p className="text-gray-400">ההזמנה תגיע עד אליך, ותשלום יתבצע במזומן בעת מסירה.</p>
+                <p className="text-gray-400">הזינו את הפרטים והשליח בדרך אליכם.</p>
              </div>
 
              <div className="bg-black p-4 md:p-6 rounded-2xl border border-neutral-800 flex flex-row gap-4 md:gap-6 items-start shadow-xl">
@@ -97,6 +97,16 @@ export const Checkout: React.FC = () => {
                         </div>
                     </div>
                 </div>
+             </div>
+
+             {/* Moved and Restyled Payment Note - Subtle & Compact */}
+             <div className="text-center md:text-right bg-neutral-900/50 border-r-4 border-[#C5A059] p-4 rounded-r-none rounded-lg shadow-sm">
+                 <p className="text-gray-200 text-sm md:text-base">
+                     ההזמנה תגיע עד אליך, <span className="font-bold text-[#C5A059]">ותשלום יתבצע במזומן בעת המסירה בלבד.</span>
+                 </p>
+                 <p className="text-xs text-gray-500 mt-1">
+                     *אין צורך בכרטיס אשראי באתר - משלמים רק כשהשליח מגיע.
+                 </p>
              </div>
 
              {/* Minimal Trust Icons Row */}

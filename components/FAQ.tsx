@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Minus, HelpCircle } from 'lucide-react';
+import { Plus, Minus, HelpCircle, MessageCircle } from 'lucide-react';
 import { FaqItem } from '../types';
 
 const faqItems: FaqItem[] = [
@@ -90,17 +90,25 @@ export const FAQ: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-16 text-center bg-neutral-900/40 border border-neutral-800 rounded-2xl p-8">
-           <h3 className="text-xl font-bold text-white mb-2">יש לכם שאלה נוספת?</h3>
-           <p className="text-gray-400 mb-6">צוות המומחים שלנו זמין עבורכם לייעוץ אישי בווצאפ</p>
-           <a 
-             href="https://wa.me/972538227778" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             className="inline-flex items-center gap-2 bg-[#25D366] text-white px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-lg"
-           >
-             צ'אט מהיר בווצאפ
-           </a>
+        <div className="mt-16 text-center relative overflow-hidden bg-neutral-900/40 border border-[#C5A059]/30 rounded-3xl p-10 group hover:border-[#C5A059]/50 transition-colors duration-500">
+           {/* Background Glow */}
+           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[#C5A059]/5 blur-3xl rounded-full pointer-events-none"></div>
+           
+           <div className="relative z-10">
+               <h3 className="text-2xl md:text-3xl font-black text-white mb-3">יש לכם שאלה נוספת?</h3>
+               <p className="text-gray-400 mb-8 text-lg max-w-xl mx-auto">
+                   צוות המומחים שלנו זמין עבורכם לייעוץ אישי בווצאפ לכל שאלה, התייעצות או עזרה בהזמנה.
+               </p>
+               <a 
+                 href="https://wa.me/972538227778" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-lg hover:scale-105 hover:shadow-[0_0_30px_rgba(37,211,102,0.4)] transition-all duration-300"
+               >
+                 <MessageCircle size={24} />
+                 צ'אט מהיר בווצאפ
+               </a>
+           </div>
         </div>
       </div>
     </section>
