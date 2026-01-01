@@ -82,9 +82,23 @@ export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => 
 
         </div>
 
-        <div className="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
-          <p>© 2024 Shini Deep Sleep Pro. כל הזכויות שמורות.</p>
-          <p>נבנה בסטנדרט הגבוה ביותר.</p>
+        <div className="border-t border-gray-900 pt-8 flex flex-col items-center justify-center gap-4 text-xs text-gray-600">
+          <div className="flex flex-col items-center gap-1">
+             <p className="text-lg font-medium text-gray-400 tracking-wide">
+               שיני הפתרון המושלם לנחירות ושינה מושלמת
+             </p>
+             <p className="text-[10px] text-gray-600 font-light">
+               הדרכה לשימוש נכון במכשיר והמלצות לשינה בריאה ונעימה
+             </p>
+          </div>
+          <div className="flex flex-col md:flex-row gap-4 w-full justify-between items-center mt-2">
+              <p>© 2024 Shini Deep Sleep Pro. כל הזכויות שמורות.</p>
+              <p>נבנה בסטנדרט הגבוה ביותר.</p>
+          </div>
+          {/* Hidden SEO Text */}
+          <div className="sr-only">
+             פיתרון לנחירות שינה טובה מפסיקים לנחור שיני המכשיר המתקדם ביותר לנחירות
+          </div>
         </div>
       </div>
     </footer>

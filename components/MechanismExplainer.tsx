@@ -49,6 +49,16 @@ export const MechanismExplainer: React.FC = () => {
       {/* Background Ambience */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(197,160,89,0.05),transparent_70%)] pointer-events-none"></div>
 
+      {/* Tech Background Image */}
+      <div className="absolute inset-0 z-0">
+         <div className="absolute inset-0 bg-neutral-950/90 z-10"></div>
+         <img 
+            src="https://i.imgur.com/nSd9XBi.jpeg" 
+            alt="" 
+            className="w-full h-full object-cover opacity-20 mix-blend-screen grayscale"
+         />
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
         
         {/* Header */}
@@ -154,33 +164,44 @@ const FeatureCard: React.FC<{ feature: any }> = ({ feature }) => (
 );
 
 const CoreAnimation = () => (
-    <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+    <div className="relative w-64 h-64 md:w-96 md:h-96 flex items-center justify-center">
         {/* Glow */}
-        <div className="absolute inset-0 bg-blue-500/10 rounded-full blur-[100px] animate-pulse"></div>
+        <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-[80px] animate-pulse"></div>
         
         {/* Orbit Rings */}
-        <div className="absolute inset-0 border border-neutral-800 rounded-full animate-[spin_40s_linear_infinite]"></div>
-        <div className="absolute inset-12 border border-neutral-700/20 border-dashed rounded-full animate-[spin_25s_linear_infinite_reverse]"></div>
+        <div className="absolute inset-0 border border-neutral-800 rounded-full animate-[spin_60s_linear_infinite]">
+             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_10px_#3b82f6]"></div>
+        </div>
+        <div className="absolute inset-8 border border-neutral-700/30 border-dashed rounded-full animate-[spin_40s_linear_infinite_reverse]"></div>
         
         {/* Central Component */}
-        <div className="relative w-40 h-40 md:w-52 md:h-52 bg-black rounded-[3rem] border border-neutral-800 shadow-[0_0_60px_rgba(59,130,246,0.1)] flex flex-col items-center justify-center z-10 overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 to-black"></div>
+        <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-2 border-neutral-800 shadow-[0_0_50px_rgba(59,130,246,0.15)] flex flex-col items-center justify-center z-10 overflow-hidden group bg-black">
             
-            {/* Radar Scan */}
-            <div className="absolute inset-0 opacity-20 bg-[conic-gradient(from_0deg,transparent_0deg,rgba(59,130,246,0.4)_360deg)] animate-[spin_5s_linear_infinite]"></div>
-            
-            <Activity size={56} className="text-blue-400 relative z-20 group-hover:scale-110 transition-transform duration-700" />
-            <div className="mt-4 flex flex-col items-center relative z-20">
-                <span className="text-[11px] text-blue-500 font-mono tracking-widest uppercase">Smart EMS™</span>
-                <span className="text-[9px] text-gray-500 font-mono mt-1">ACTIVE MONITORING</span>
+            {/* Usage Image */}
+            <div className="absolute inset-0">
+               <img 
+                 src="https://i.imgur.com/nSd9XBi.jpeg" 
+                 alt="Smart EMS In Use" 
+                 className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+               />
+               <div className="absolute inset-0 bg-blue-900/10 mix-blend-overlay"></div>
+               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20"></div>
             </div>
             
-            {/* The Scanning Line */}
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-blue-400/50 shadow-[0_0_15px_#3b82f6] animate-scan z-30"></div>
+            {/* Tech UI Overlays */}
+            <div className="absolute inset-0 opacity-30 bg-[conic-gradient(from_0deg,transparent_0deg,rgba(59,130,246,0.3)_360deg)] animate-[spin_4s_linear_infinite]"></div>
+            
+            {/* Center Status */}
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center z-20">
+                 <div className="flex items-center gap-2 bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full border border-blue-500/30">
+                    <Activity size={14} className="text-blue-400 animate-pulse" />
+                    <span className="text-[10px] text-blue-100 font-mono font-bold tracking-widest uppercase">
+                        Monitoring
+                    </span>
+                 </div>
+            </div>
+            
+            {/* Scanning Line REMOVED */}
         </div>
-        
-        {/* External nodes */}
-        <div className="absolute top-4 right-1/4 w-3 h-3 rounded-full bg-blue-500/40 animate-ping"></div>
-        <div className="absolute bottom-10 left-10 w-2 h-2 rounded-full bg-purple-500/40 animate-ping [animation-delay:1.5s]"></div>
     </div>
 );
