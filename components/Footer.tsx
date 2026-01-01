@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => 
               className="h-20 w-auto mb-6 mx-auto md:mx-0 object-contain"
             />
             <p className="text-gray-500 text-sm leading-relaxed">
-              אנחנו ב-Shini מאמינים ששינה טובה היא הבסיס לחיים טובים. הערכה שלנו פותחה כדי לתת לכם ולבני הזוג שלכם שקט נפשי (ושינה שקטה).
+              אנחנו ב‑Shini מאמינים ששינה טובה היא הבסיס לחיים טובים. ההערכה שלנו נוצרה במיוחד כדי לתת לכם ולבני הזוג שלכם שקט נפשי ושינה שקטה
             </p>
           </div>
 
@@ -89,21 +89,32 @@ export const Footer: React.FC<FooterProps> = ({ currentView, onViewChange }) => 
         </div>
 
         <div className="border-t border-gray-900 pt-8 flex flex-col items-center justify-center gap-4 text-xs text-gray-600">
-          <div className="flex flex-col items-center gap-1">
+          <div className="flex flex-col items-center gap-2 px-4 text-center">
              <p className="text-lg font-medium text-gray-400 tracking-wide">
-               שיני הפתרון המושלם לנחירות ושינה מושלמת
+               Shini – הפתרון המושלם לנחירות ושינה עמוקה
              </p>
-             <p className="text-[10px] text-gray-600 font-light">
-               הדרכה לשימוש נכון במכשיר והמלצות לשינה בריאה ונעימה
+             <p className="text-xs text-gray-500 font-normal leading-relaxed max-w-3xl">
+               מכשיר איכותי, מומלץ ע"י רופאים, לטיפול טבעי בנחירות כולל הדרכה לשימוש ושינה בריאה ונעימה.
              </p>
           </div>
           <div className="flex flex-col md:flex-row gap-4 w-full justify-between items-center mt-2">
               <p>© 2024 Shini Deep Sleep Pro. כל הזכויות שמורות.</p>
-              <p>נבנה בסטנדרט הגבוה ביותר.</p>
+              <div className="flex flex-col md:flex-row items-center gap-2">
+                  <p>נבנה בסטנדרט הגבוה ביותר.</p>
+                  <span className="hidden md:block text-gray-800">|</span>
+                  <a 
+                    href="https://cnshini11-source.github.io/levi-studio/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="font-bold text-gray-500 hover:text-[#C5A059] transition-colors"
+                  >
+                    נבנה ע"י LEVI
+                  </a>
+              </div>
           </div>
           {/* Hidden SEO Text */}
           <div className="sr-only">
-             פיתרון לנחירות שינה טובה מפסיקים לנחור שיני המכשיר המתקדם ביותר לנחירות
+             פיתרון לנחירות שינה טובה מפסיקים לנחור שיני המכשיר המתקדם ביותר לנחירות טיפול טבעי בנחירות מכשיר מומלץ נגד נחירות
           </div>
         </div>
       </div>
