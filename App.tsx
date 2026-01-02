@@ -12,6 +12,7 @@ import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { RefundPolicy } from './components/RefundPolicy';
 import { AccessibilityStatement } from './components/AccessibilityStatement';
 import { FloatingWidgets } from './components/FloatingWidgets';
+import { CookieConsent } from './components/CookieConsent';
 
 function App() {
   const [view, setView] = useState<'home' | 'checkout' | 'terms' | 'privacy' | 'refunds' | 'accessibility'>('home');
@@ -69,6 +70,7 @@ function App() {
 
       <Footer currentView={view} onViewChange={setView} />
       <FloatingWidgets />
+      <CookieConsent />
     </div>
   );
 }
