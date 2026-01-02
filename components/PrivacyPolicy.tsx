@@ -133,7 +133,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
               </p>
               <div className="flex flex-col gap-2 text-white">
                  <span>דוא"ל: support@shini-sleep.co.il</span>
-                 <span>טלפון: 050-0000000</span>
+                 <span>טלפון: 053-8227778</span>
               </div>
             </div>
           </section>
