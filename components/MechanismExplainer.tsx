@@ -118,7 +118,7 @@ export const MechanismExplainer: React.FC = () => {
 
             {/* Integration Instructions */}
             <div className="mt-24 md:mt-32">
-                <div className="relative border border-[#C5A059]/30 rounded-3xl p-8 md:p-12 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+                <div className="relative border border-[#C5A059]/30 rounded-3xl p-4 md:p-12 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
                     
                     {/* NEW Background Image with Overlay for "How To Use" */}
                     <div className="absolute inset-0 z-0">
@@ -137,27 +137,27 @@ export const MechanismExplainer: React.FC = () => {
                         <Smartphone size={120} className="text-white" />
                     </div>
                     
-                    <div className="relative z-10 flex flex-col md:flex-row items-stretch gap-10">
+                    <div className="relative z-10 flex flex-col md:flex-row items-stretch gap-6 md:gap-10">
                         <div className="text-center md:text-right md:w-1/3 flex flex-col justify-center">
-                            <h3 className="text-3xl md:text-4xl font-black text-white mb-4 leading-tight">
+                            <h3 className="text-2xl md:text-4xl font-black text-white mb-2 md:mb-4 leading-tight">
                                 איך משתמשים <span className="text-[#C5A059]">נכון?</span>
                             </h3>
-                            <p className="text-gray-400 text-lg">פשוט, מהיר ואפקטיבי. פחות מ-30 שניות ואתם מוכנים לשינה שקטה ואיכותית.</p>
+                            <p className="text-gray-400 text-base md:text-lg">פשוט, מהיר ואפקטיבי. פחות מ-30 שניות ואתם מוכנים לשינה שקטה ואיכותית.</p>
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full md:w-2/3">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 w-full md:w-2/3">
                             {usageSteps.map((step, idx) => (
-                                <div key={idx} className="relative bg-black/60 border border-white/5 p-6 rounded-2xl group hover:border-[#C5A059]/50 hover:bg-neutral-900/80 transition-all duration-500 overflow-hidden flex flex-col">
+                                <div key={idx} className="relative bg-black/60 border border-white/5 p-4 md:p-6 rounded-2xl group hover:border-[#C5A059]/50 hover:bg-neutral-900/80 transition-all duration-500 overflow-hidden flex flex-col">
                                     {/* Big Number Background */}
                                     <div className="absolute -bottom-4 -left-4 text-9xl font-black text-[#C5A059]/5 select-none pointer-events-none group-hover:text-[#C5A059]/10 transition-colors">
                                         {idx + 1}
                                     </div>
 
-                                    <div className="flex items-center gap-3 mb-4 relative z-10">
+                                    <div className="flex items-center gap-3 mb-2 md:mb-4 relative z-10">
                                         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#C5A059] to-[#8E7036] text-black flex items-center justify-center font-bold text-sm shadow-[0_0_15px_rgba(197,160,89,0.3)]">
                                             {idx + 1}
                                         </div>
-                                        <h4 className="font-bold text-white text-lg">{step.label}</h4>
+                                        <h4 className="font-bold text-white text-base md:text-lg">{step.label}</h4>
                                     </div>
                                     <p className="text-gray-400 text-sm leading-relaxed relative z-10 font-light group-hover:text-gray-200 transition-colors">
                                         {step.text}
